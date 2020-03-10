@@ -1,0 +1,4 @@
+# compiled gitignore for all the projects
+# entries from contract_testingcontract_testing/.rspec_status
+contract_testing/cpc-library/node_modules/
+contract_testing/cpc-librarian/node_modules/
