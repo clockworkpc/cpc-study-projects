@@ -1,4 +1,54 @@
-# compiled gitignore for all the projects
-# entries from contract_testingcontract_testing/.rspec_status
+## COMPILED .gitignore FOR ALL THE projects
+## -----------------------------------------
+
+# entries from cpc-librarian
+cpc-librarian/node_modules/
+
+# entries from cpc-library
+cpc-library/node_modules/
+
+# entries from contract_testing
+contract_testing/.rspec_status
 contract_testing/cpc-library/node_modules/
 contract_testing/cpc-librarian/node_modules/
+
+# entries from cpc-java
+cpc-java//.idea/
+cpc-java/*.iml
+cpc-java//target/
+cpc-java//out/
+cpc-java//lib
+cpc-java//build/
+cpc-java//bin
+cpc-java/.classpath
+cpc-java/.project
+cpc-java/.settings
+# entries from cpc-graphql
+cpc-graphql/node_modules
+
+# entries from cpc-contract-testing
+cpc-contract-testing/.rspec_status
+cpc-contract-testing/cpc-library/node_modules/
+cpc-contract-testing/cpc-librarian/node_modules/
+
+# entries from http.cat
+http.cat/
+http.cat/node_modules
+http.cat/.pnp
+http.cat/.pnp.js
+http.cat/
+http.cat/coverage
+http.cat/
+http.cat/build
+http.cat/dist
+http.cat/
+http.cat/.DS_Store
+http.cat/.env
+http.cat/.env.local
+http.cat/.env.development.local
+http.cat/.env.test.local
+http.cat/.env.production.local
+http.cat/
+http.cat/npm-debug.log*
+http.cat/yarn-debug.log*
+http.cat/yarn-error.log*
