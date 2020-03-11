@@ -1,11 +1,10 @@
 ## COMPILED .gitignore FOR ALL THE projects
 ## -----------------------------------------
 
-# entries from cpc-librarian
-cpc-librarian/node_modules/
-
-# entries from cpc-library
-cpc-library/node_modules/
+# entries from contract_testing
+contract_testing/.rspec_status
+contract_testing/cpc-library/node_modules/
+contract_testing/cpc-librarian/node_modules/
 
 # entries from cpc-java
 cpc-java//.idea/
@@ -20,11 +19,6 @@ cpc-java/.project
 cpc-java/.settings
 # entries from cpc-graphql
 cpc-graphql/node_modules
-
-# entries from cpc-contract-testing
-cpc-contract-testing/.rspec_status
-cpc-contract-testing/cpc-library/node_modules/
-cpc-contract-testing/cpc-librarian/node_modules/
 
 # entries from http.cat
 http.cat/
