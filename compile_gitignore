@@ -8,9 +8,9 @@ end
 
 def dot_gitignore_entries(dot_gitignore_path)
   folder_path = dot_gitignore_path.sub('/.gitignore', '')
-  entries_str_ary = File.readlines(dot_gitignore_path)
+  File.readlines(dot_gitignore_path)
   .reject {|e| e[0].eql?("\#")}
-  .map {|e| [folder_path, e].join('/')}
+  .map {|e| [folder_path, e].join('/').gsub('//', '/') unless e.strip.empty? }
 end
 
 def add_gitignore_contents(f)

@@ -1,4 +1,20 @@
 # compiled gitignore for all the projects
-# entries from contract_testingcontract_testing/.rspec_status
-contract_testing/cpc-library/node_modules/
-contract_testing/cpc-librarian/node_modules/
+# entries from rails_for_zombiesrails_for_zombies/.bundle
+rails_for_zombies/db/*.sqlite3
+rails_for_zombies/db/*.sqlite3-journal
+rails_for_zombies/db/*.sqlite3-*
+rails_for_zombies/log/*
+rails_for_zombies/tmp/*
+rails_for_zombies/!/log/.keep
+rails_for_zombies/!/tmp/.keep
+rails_for_zombies/storage/*
+rails_for_zombies/!/storage/.keep
+rails_for_zombies/public/assets
+rails_for_zombies/.byebug_history
+rails_for_zombies/config/master.key
+rails_for_zombies/public/packs
+rails_for_zombies/public/packs-test
+rails_for_zombies/node_modules
+rails_for_zombies/yarn-error.log
+rails_for_zombies/yarn-debug.log*
+rails_for_zombies/.yarn-integrity
