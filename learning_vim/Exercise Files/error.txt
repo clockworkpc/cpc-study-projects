@@ -1,3 +1,0 @@
-# command-line-arguments
-./hello.go:8:26: newline in string
-./hello.go:8:26: syntax error: unexpected newline, expecting comma or )
