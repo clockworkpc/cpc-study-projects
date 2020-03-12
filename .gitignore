@@ -22,6 +22,13 @@ rails_5_essentials//public/assets
 rails_5_essentials/.byebug_history
 rails_5_essentials/
 rails_5_essentials//config/master.key
+rails_5_essentials/
+rails_5_essentials//public/packs
+rails_5_essentials//public/packs-test
+rails_5_essentials//node_modules
+rails_5_essentials//yarn-error.log
+rails_5_essentials/yarn-debug.log*
+rails_5_essentials/.yarn-integrity
 
 
 # entries from zombie_twitter_rails_app
