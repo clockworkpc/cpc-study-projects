@@ -1,4 +1,39 @@
 # compiled gitignore for all the projects
+# entries from simple_cmssimple_cms/.bundle
+simple_cms/db/*.sqlite3
+simple_cms/db/*.sqlite3-journal
+simple_cms/db/*.sqlite3-*
+simple_cms/log/*
+simple_cms/tmp/*
+simple_cms/!/log/.keep
+simple_cms/!/tmp/.keep
+simple_cms/storage/*
+simple_cms/!/storage/.keep
+simple_cms/public/assets
+simple_cms/.byebug_history
+simple_cms/config/master.key
+simple_cms/public/packs
+simple_cms/public/packs-test
+simple_cms/node_modules
+simple_cms/yarn-error.log
+simple_cms/yarn-debug.log*
+simple_cms/.yarn-integrity
+# entries from railsrails/.Gemfile
+rails/.byebug_history
+rails/.ruby-version
+rails/*/doc/
+rails/*/test/tmp/
+rails/.bundle
+rails/dist/
+rails/doc/
+rails/guides/output/
+rails/debug.log
+rails/node_modules/
+rails/package-lock.json
+rails/pkg/
+rails/tmp/
+rails/yarn-error.log
+rails/test-reports/
 # entries from rails_for_zombiesrails_for_zombies/.bundle
 rails_for_zombies/db/*.sqlite3
 rails_for_zombies/db/*.sqlite3-journal

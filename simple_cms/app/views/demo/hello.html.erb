@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Hello from Hello!</h1>
+    <p>
+      <% @array.each do |n| %>
+        <%= n %><br />
+      <% end %>
+    </p>  
+
+    <br />
+
+    <%= link_to('Index page', {action: 'index'}) %><br />
+
+    <p>ID: <%= @id %></p>    
+
+    <p>ID: <%= params[:id] %></p>
+
+    <p>Page: <%= @page %></p>    
+
+    <p>Page: <%= params[:page] %></p>
+
+    <p>Next Page: <%= @page.to_i + 1 %></p>
+
+
+
+  </body>
+</html>
