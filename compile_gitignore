@@ -17,25 +17,20 @@ def add_gitignore_contents(f)
   dot_gitignore_paths.each do |dot_gitignore_path|
     folder_path = dot_gitignore_path.sub('/.gitignore', '')
     entries_str_ary = dot_gitignore_entries(dot_gitignore_path)
-    f.write("\# entries from #{folder_path}")
+    f.write("\n\n\# entries from #{folder_path}\n")
     entries_str_ary.each {|e| f.write(e)}
   end
-
-
-
-  # gitignore_files.each do |gf|
-  #   path = File.path(gf).split
-  #   contents_ary = File.readlines(gf)
-  #   contents_ary.each do |line|
-  #     updated_line = [path, line].join('/')
-  #     f.write(updated_line)
-  #   end
-  # end
 end
 
 def refresh_main_gitignore
+  header = "\#\# COMPILED .gitignore FOR ALL THE projects\n"
+  breakline = '## '
+  (header.strip.length - 2).times { breakline += '-' }
+  breakline += "\n"
+
   f = File.new(".gitignore", 'w')
-  f.write("\# compiled gitignore for all the projects\n")
+  f.write(header)
+  f.write(breakline)
   add_gitignore_contents(f)
   f.close
   g = File.read(".gitignore")
