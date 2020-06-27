@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: simple_cms_development
+
+test:
+  <<: *default
+  database: simple_cms_test
+
+production:
+  <<: *default
+  database: simple_cms_production
+  username: dev 
+  password: Rails.application.credentials[:SIMPLE_CMS_DATABASE_PASSWORD]
+  # password: <%= ENV['SIMPLE_CMS_DATABASE_PASSWORD'] %>
+
+
