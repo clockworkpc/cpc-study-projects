@@ -1,0 +1,21 @@
+<svg id="Layer_1" data-name="Layer 1" 
+  xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50.26 54.73">
+  <defs>
+    <style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:#61cece;}</style>
+    <linearGradient id="linear-gradient" x1="18.32" y1="41.2" x2="50.26" y2="41.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3cbcb8"/>
+      <stop offset="0.54" stop-color="#61cece"/>
+    </linearGradient>
+  </defs>
+  <title>Logo_2019</title>
+  <g id="Page-1">
+    <g id="Logo-Copy">
+      <g id="Group-2">
+        <path id="Fill-1" class="cls-1" d="M18.32,37A24.24,24.24,0,0,0,34.74,52.81,25.13,25.13,0,0,0,50.26,29.6H35.2a10.06,10.06,0,0,1-10.05,10A9.94,9.94,0,0,1,18.32,37Z"/>
+        <path class="cls-2" d="M30.71,0V5.08a25.14,25.14,0,1,0,.91,48.8A26.26,26.26,0,0,1,15.17,31a10.39,10.39,0,0,1-.11-1.36,10.06,10.06,0,0,1,10-10h5.58v0H50.24A19.52,19.52,0,0,0,30.71,0Zm9.48,15.9a4,4,0,1,1,4-4A4,4,0,0,1,40.19,15.9Z"/>
+        <path id="Fill-12" class="cls-2" d="M40.4,11.89A1.57,1.57,0,1,1,42,13.47a1.57,1.57,0,0,1-1.57-1.58"/>
+      </g>
+    </g>
+  </g>
+</svg>

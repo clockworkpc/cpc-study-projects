@@ -1,0 +1,211 @@
+
+Collection
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/collection_spec.rb (PENDING: Not yet implemented)
+
+Notification
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/notification_spec.rb (PENDING: Not yet implemented)
+
+Response
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/response_spec.rb (PENDING: Not yet implemented)
+
+Team
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/team_spec.rb (PENDING: Not yet implemented)
+
+TeamUser
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/team_user_spec.rb (PENDING: Not yet implemented)
+
+User
+  add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/user_spec.rb (PENDING: Not yet implemented)
+
+/collections
+  GET /index
+    renders a successful response
+  GET /show
+    renders a successful response
+  GET /new
+    renders a successful response
+  GET /edit
+    render a successful response
+  POST /create
+    with valid parameters
+      creates a new Collection
+      redirects to the created collection
+    with invalid parameters
+      does not create a new Collection
+      renders a successful response (i.e. to display the 'new' template)
+  PATCH /update
+    with valid parameters
+      updates the requested collection
+      redirects to the collection
+    with invalid parameters
+      renders a successful response (i.e. to display the 'edit' template)
+  DELETE /destroy
+    destroys the requested collection
+    redirects to the collections list
+
+Homes
+  GET /index
+    returns http success
+
+/notifications
+  GET /index
+    renders a successful response (PENDING: Add a hash of attributes valid for your model)
+  GET /show
+    renders a successful response (PENDING: Add a hash of attributes valid for your model)
+
+/teams
+  GET /index
+    renders a successful response (PENDING: Add a hash of attributes valid for your model)
+  GET /show
+    renders a successful response (PENDING: Add a hash of attributes valid for your model)
+  GET /new
+    renders a successful response
+  GET /edit
+    render a successful response (PENDING: Add a hash of attributes valid for your model)
+  POST /create
+    with valid parameters
+      creates a new Team (PENDING: Add a hash of attributes valid for your model)
+      redirects to the created team (PENDING: Add a hash of attributes valid for your model)
+    with invalid parameters
+      does not create a new Team (PENDING: Add a hash of attributes invalid for your model)
+      renders a successful response (i.e. to display the 'new' template) (PENDING: Add a hash of attributes invalid for your model)
+  PATCH /update
+    with valid parameters
+      updates the requested team (PENDING: Add a hash of attributes valid for your model)
+      redirects to the team (PENDING: Add a hash of attributes valid for your model)
+    with invalid parameters
+      renders a successful response (i.e. to display the 'edit' template) (PENDING: Add a hash of attributes valid for your model)
+  DELETE /destroy
+    destroys the requested team (PENDING: Add a hash of attributes valid for your model)
+    redirects to the teams list (PENDING: Add a hash of attributes valid for your model)
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) Collection add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/collection_spec.rb
+     # Not yet implemented
+     # ./spec/models/collection_spec.rb:4
+
+  2) Notification add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/notification_spec.rb
+     # Not yet implemented
+     # ./spec/models/notification_spec.rb:4
+
+  3) Response add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/response_spec.rb
+     # Not yet implemented
+     # ./spec/models/response_spec.rb:4
+
+  4) Team add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/team_spec.rb
+     # Not yet implemented
+     # ./spec/models/team_spec.rb:4
+
+  5) TeamUser add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/team_user_spec.rb
+     # Not yet implemented
+     # ./spec/models/team_user_spec.rb:4
+
+  6) User add some examples to (or delete) /home/alexander/Development/inspiregroup/chameleon_feedback/spec/models/user_spec.rb
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:4
+
+  7) /notifications GET /index renders a successful response
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/notifications_spec.rb:27
+
+  8) /notifications GET /show renders a successful response
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/notifications_spec.rb:35
+
+  9) /teams GET /index renders a successful response
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:27
+
+  10) /teams GET /show renders a successful response
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:35
+
+  11) /teams GET /edit render a successful response
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:50
+
+  12) /teams POST /create with valid parameters creates a new Team
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:59
+
+  13) /teams POST /create with valid parameters redirects to the created team
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:65
+
+  14) /teams POST /create with invalid parameters does not create a new Team
+     # Add a hash of attributes invalid for your model
+     # ./spec/requests/teams_spec.rb:72
+
+  15) /teams POST /create with invalid parameters renders a successful response (i.e. to display the 'new' template)
+     # Add a hash of attributes invalid for your model
+     # ./spec/requests/teams_spec.rb:78
+
+  16) /teams PATCH /update with valid parameters updates the requested team
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:91
+
+  17) /teams PATCH /update with valid parameters redirects to the team
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:98
+
+  18) /teams PATCH /update with invalid parameters renders a successful response (i.e. to display the 'edit' template)
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:107
+
+  19) /teams DELETE /destroy destroys the requested team
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:116
+
+  20) /teams DELETE /destroy redirects to the teams list
+     # Add a hash of attributes valid for your model
+     # ./spec/requests/teams_spec.rb:123
+
+Top 10 slowest examples (0.20467 seconds, 74.5% of total time):
+  /collections GET /show renders a successful response
+    0.04474 seconds ./spec/requests/collections_spec.rb:48
+  /collections GET /index renders a successful response
+    0.04227 seconds ./spec/requests/collections_spec.rb:41
+  /teams GET /new renders a successful response
+    0.02006 seconds ./spec/requests/teams_spec.rb:43
+  /collections PATCH /update with invalid parameters renders a successful response (i.e. to display the 'edit' template)
+    0.01762 seconds ./spec/requests/collections_spec.rb:118
+  /collections GET /new renders a successful response
+    0.01441 seconds ./spec/requests/collections_spec.rb:55
+  /collections POST /create with valid parameters creates a new Collection
+    0.01367 seconds ./spec/requests/collections_spec.rb:70
+  /collections GET /edit render a successful response
+    0.01333 seconds ./spec/requests/collections_spec.rb:62
+  /collections POST /create with invalid parameters does not create a new Collection
+    0.01325 seconds ./spec/requests/collections_spec.rb:83
+  /collections PATCH /update with valid parameters redirects to the collection
+    0.01287 seconds ./spec/requests/collections_spec.rb:110
+  /collections PATCH /update with valid parameters updates the requested collection
+    0.01246 seconds ./spec/requests/collections_spec.rb:104
+
+Top 10 slowest example groups:
+  /collections
+    0.01774 seconds average (0.23066 seconds / 13 examples) ./spec/requests/collections_spec.rb:15
+  Homes
+    0.00927 seconds average (0.00927 seconds / 1 example) ./spec/requests/home_request_spec.rb:3
+  /teams
+    0.00239 seconds average (0.03101 seconds / 13 examples) ./spec/requests/teams_spec.rb:15
+  /notifications
+    0.00098 seconds average (0.00196 seconds / 2 examples) ./spec/requests/notifications_spec.rb:15
+  Collection
+    0.00014 seconds average (0.00014 seconds / 1 example) ./spec/models/collection_spec.rb:3
+  Notification
+    0.00009 seconds average (0.00009 seconds / 1 example) ./spec/models/notification_spec.rb:3
+  Response
+    0.00008 seconds average (0.00008 seconds / 1 example) ./spec/models/response_spec.rb:3
+  Team
+    0.00008 seconds average (0.00008 seconds / 1 example) ./spec/models/team_spec.rb:3
+  TeamUser
+    0.00008 seconds average (0.00008 seconds / 1 example) ./spec/models/team_user_spec.rb:3
+  User
+    0.00007 seconds average (0.00007 seconds / 1 example) ./spec/models/user_spec.rb:3
+
+Finished in 0.27472 seconds (files took 1.46 seconds to load)
+35 examples, 0 failures, 20 pending
+
+Coverage report generated for RSpec to /home/alexander/Development/inspiregroup/chameleon_feedback/coverage. 344 / 394 LOC (87.31%) covered.

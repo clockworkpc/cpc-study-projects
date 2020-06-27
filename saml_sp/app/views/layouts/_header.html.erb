@@ -1,0 +1,22 @@
+<header class="bg-white" style="height: 60px;box-shadow: 0 2px 8px 0 rgba(0,0,0,0.05);">
+  <div class="container mx-auto h-full px-6">
+    <div class="flex items-center justify-center h-full">
+      <div class="">
+        <a href="/">
+          <img src="<%= asset_pack_path 'media/images/logo.svg' %>" style="height: 40px" />
+          <span class="visually-hidden">Lizard SAML IdP</span>
+        </a>
+      </div>
+      <div class="flex-1 ml-6">
+
+      </div>
+        <% if current_user %>
+          <a href="/users/sign_out" data-method="delete">Sign out</a>
+        <% else %>
+          <a href="/users/sign_in" class="mr-4">Sign In</a>
+          <a href="/users/sign_up">Register</a>
+        <% end %>
+      </div>
+    </div>
+    <div>
+</header>

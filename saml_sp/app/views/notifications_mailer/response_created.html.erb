@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiva='Content-Type'>
+  </head>
+  <body>
+    <h1>
+      Feedback for <%= @collection.description %> from <%= @response.identity %>
+    </h1>
+
+    <p id='greeting'>Hi</p>
+
+    <p id='opening_line'><%= @response.identity %> just gave some feedback for the Collection <%= @collection.description %>.</p>
+
+    <h2>RATING</h2>
+
+    <p id='rating'><%= @response.rating %></p>
+
+    <h2>COMMENT</h2>
+
+    <p id='content'><%= @response.content %></p>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+default: &default
+  adapter: sqlite3
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: lizard_saml_idp_development
+
+test:
+  <<: *default
+  database: lizard_saml_idp_test
+
+production:
+  <<: *default
+  database: lizard_saml_idp_production
+  username: lizard_saml_idp
+  password: <%= Rails.application.credentials[:LIZARD_SAML_IDP_DB_PASSWORD] %>
