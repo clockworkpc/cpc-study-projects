@@ -1,4 +1,14 @@
 
+# entries from ruby-docs-samples
+ruby-docs-samples/exercise_files
+ruby-docs-samples/.ruby-version
+ruby-docs-samples/client_secrets.json
+ruby-docs-samples/.bundle/
+ruby-docs-samples/vendor/
+ruby-docs-samples/.vscode/
+ruby-docs-samples/sponge_log.xml
+ruby-docs-samples/Gemfile.lock
+
 # entries from rails_5_essentials
 rails_5_essentials/exercise_files
 rails_5_essentials/.bundle
@@ -20,6 +30,57 @@ rails_5_essentials/node_modules
 rails_5_essentials/yarn-error.log
 rails_5_essentials/yarn-debug.log*
 rails_5_essentials/.yarn-integrity
+
+# entries from rspec_api_documentation
+rspec_api_documentation/exercise_files
+rspec_api_documentation/doc
+rspec_api_documentation/tmp
+rspec_api_documentation/.rvmrc
+rspec_api_documentation/.ruby-version
+rspec_api_documentation/.ruby-gemset
+rspec_api_documentation/example/docs
+rspec_api_documentation/example/public/docs
+rspec_api_documentation/*.gem
+rspec_api_documentation/*.swp
+rspec_api_documentation/html/
+rspec_api_documentation/.idea
+
+# entries from saml_sp
+saml_sp/exercise_files
+saml_sp/.bundle
+saml_sp/log/*
+saml_sp/tmp/*
+saml_sp/!/log/.keep
+saml_sp/!/tmp/.keep
+saml_sp/storage/*
+saml_sp/!/storage/.keep
+saml_sp/public/assets
+saml_sp/.byebug_history
+saml_sp/config/master.key
+saml_sp/public/packs
+saml_sp/public/packs-test
+saml_sp/node_modules
+saml_sp/yarn-error.log
+saml_sp/yarn-debug.log*
+saml_sp/.yarn-integrity
+saml_sp/coverage
+saml_sp/spec/examples.txt
+saml_sp/tags
+saml_sp/gems.tags
+saml_sp/rubocop.html
+saml_sp/spec/fixtures/batch_params*
+saml_sp/.starscope.db
+
+# entries from rails-streaming-example
+rails-streaming-example/exercise_files
+rails-streaming-example/.bundle
+rails-streaming-example/log/*
+rails-streaming-example/tmp/*
+rails-streaming-example/!/log/.keep
+rails-streaming-example/!/tmp/.keep
+rails-streaming-example/node_modules
+rails-streaming-example/yarn-error.log
+rails-streaming-example/.byebug_history
 
 # entries from simple_cms
 simple_cms/exercise_files
@@ -43,6 +104,64 @@ simple_cms/yarn-error.log
 simple_cms/yarn-debug.log*
 simple_cms/.yarn-integrity
 simple_cms/config/credentials/development.key
+
+# entries from devisedemo
+devisedemo/exercise_files
+devisedemo/.bundle
+devisedemo/db/*.sqlite3
+devisedemo/db/*.sqlite3-journal
+devisedemo/db/*.sqlite3-*
+devisedemo/log/*
+devisedemo/tmp/*
+devisedemo/!/log/.keep
+devisedemo/!/tmp/.keep
+devisedemo/tmp/pids/*
+devisedemo/!/tmp/pids/
+devisedemo/!/tmp/pids/.keep
+devisedemo/storage/*
+devisedemo/!/storage/.keep
+devisedemo/public/assets
+devisedemo/.byebug_history
+devisedemo/config/master.key
+devisedemo/public/packs
+devisedemo/public/packs-test
+devisedemo/node_modules
+devisedemo/yarn-error.log
+devisedemo/yarn-debug.log*
+devisedemo/.yarn-integrity
+
+# entries from rails
+rails/exercise_files
+rails/.Gemfile
+rails/.byebug_history
+rails/.ruby-version
+rails/*/doc/
+rails/*/test/tmp/
+rails/.bundle
+rails/dist/
+rails/doc/
+rails/guides/output/
+rails/debug.log
+rails/node_modules/
+rails/package-lock.json
+rails/pkg/
+rails/tmp/
+rails/yarn-error.log
+rails/test-reports/
+
+# entries from saml_idp
+saml_idp/exercise_files
+saml_idp/.DS_Store
+saml_idp/.Gemfile
+saml_idp/.bundle
+saml_idp/.rvmrc
+saml_idp/coverage
+saml_idp/doc
+saml_idp/pkg
+saml_idp/tags
+saml_idp/Gemfile.lock
+saml_idp/gemfiles/*.gemfile.lock
+saml_idp/.byebug_history
 
 # entries from zombie_twitter_rails_app
 zombie_twitter_rails_app/exercise_files
@@ -69,3 +188,58 @@ zombie_twitter_rails_app/.yarn-integrity
 # entries from koans
 koans/exercise_files
 koans/.rspec_status
+
+# entries from rswag_demo
+rswag_demo/exercise_files
+rswag_demo/.bundle
+rswag_demo/db/*.sqlite3
+rswag_demo/db/*.sqlite3-journal
+rswag_demo/db/*.sqlite3-*
+rswag_demo/log/*
+rswag_demo/tmp/*
+rswag_demo/!/log/.keep
+rswag_demo/!/tmp/.keep
+rswag_demo/storage/*
+rswag_demo/!/storage/.keep
+rswag_demo/public/assets
+rswag_demo/.byebug_history
+rswag_demo/config/master.key
+rswag_demo/public/packs
+rswag_demo/public/packs-test
+rswag_demo/node_modules
+rswag_demo/yarn-error.log
+rswag_demo/yarn-debug.log*
+rswag_demo/.yarn-integrity
+
+# entries from ruby-template
+ruby-template/exercise_files
+ruby-template/.rspec_status
+
+# entries from math_games
+math_games/exercise_files
+math_games/.rspec_status
+
+# entries from bookshelf
+bookshelf/exercise_files
+bookshelf/.bundle
+bookshelf/db/*.sqlite3
+bookshelf/db/*.sqlite3-journal
+bookshelf/db/*.sqlite3-*
+bookshelf/log/*
+bookshelf/tmp/*
+bookshelf/!/log/.keep
+bookshelf/!/tmp/.keep
+bookshelf/tmp/pids/*
+bookshelf/!/tmp/pids/
+bookshelf/!/tmp/pids/.keep
+bookshelf/storage/*
+bookshelf/!/storage/.keep
+bookshelf/public/assets
+bookshelf/.byebug_history
+bookshelf/config/master.key
+bookshelf/public/packs
+bookshelf/public/packs-test
+bookshelf/node_modules
+bookshelf/yarn-error.log
+bookshelf/yarn-debug.log*
+bookshelf/.yarn-integrity
