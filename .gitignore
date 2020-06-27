@@ -130,6 +130,18 @@ devisedemo/yarn-error.log
 devisedemo/yarn-debug.log*
 devisedemo/.yarn-integrity
 
+# entries from cpc-java
+cpc-java/exercise_files
+cpc-java/.idea/
+cpc-java/*.iml
+cpc-java/target/
+cpc-java/out/
+cpc-java/lib
+cpc-java/build/
+cpc-java/bin
+cpc-java/.classpath
+cpc-java/.project
+cpc-java/.settings
 # entries from rails
 rails/exercise_files
 rails/.Gemfile
