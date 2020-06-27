@@ -1,5 +1,29 @@
-# compiled gitignore for all the projects
-# entries from simple_cmssimple_cms/.bundle
+
+# entries from rails_5_essentials
+rails_5_essentials/exercise_files
+rails_5_essentials/.bundle
+rails_5_essentials/db/*.sqlite3
+rails_5_essentials/db/*.sqlite3-journal
+rails_5_essentials/db/*.sqlite3-*
+rails_5_essentials/log/*
+rails_5_essentials/tmp/*
+rails_5_essentials/!/log/.keep
+rails_5_essentials/!/tmp/.keep
+rails_5_essentials/storage/*
+rails_5_essentials/!/storage/.keep
+rails_5_essentials/public/assets
+rails_5_essentials/.byebug_history
+rails_5_essentials/config/master.key
+rails_5_essentials/public/packs
+rails_5_essentials/public/packs-test
+rails_5_essentials/node_modules
+rails_5_essentials/yarn-error.log
+rails_5_essentials/yarn-debug.log*
+rails_5_essentials/.yarn-integrity
+
+# entries from simple_cms
+simple_cms/exercise_files
+simple_cms/.bundle
 simple_cms/db/*.sqlite3
 simple_cms/db/*.sqlite3-journal
 simple_cms/db/*.sqlite3-*
@@ -18,38 +42,30 @@ simple_cms/node_modules
 simple_cms/yarn-error.log
 simple_cms/yarn-debug.log*
 simple_cms/.yarn-integrity
-# entries from railsrails/.Gemfile
-rails/.byebug_history
-rails/.ruby-version
-rails/*/doc/
-rails/*/test/tmp/
-rails/.bundle
-rails/dist/
-rails/doc/
-rails/guides/output/
-rails/debug.log
-rails/node_modules/
-rails/package-lock.json
-rails/pkg/
-rails/tmp/
-rails/yarn-error.log
-rails/test-reports/
-# entries from rails_for_zombiesrails_for_zombies/.bundle
-rails_for_zombies/db/*.sqlite3
-rails_for_zombies/db/*.sqlite3-journal
-rails_for_zombies/db/*.sqlite3-*
-rails_for_zombies/log/*
-rails_for_zombies/tmp/*
-rails_for_zombies/!/log/.keep
-rails_for_zombies/!/tmp/.keep
-rails_for_zombies/storage/*
-rails_for_zombies/!/storage/.keep
-rails_for_zombies/public/assets
-rails_for_zombies/.byebug_history
-rails_for_zombies/config/master.key
-rails_for_zombies/public/packs
-rails_for_zombies/public/packs-test
-rails_for_zombies/node_modules
-rails_for_zombies/yarn-error.log
-rails_for_zombies/yarn-debug.log*
-rails_for_zombies/.yarn-integrity
+simple_cms/config/credentials/development.key
+
+# entries from zombie_twitter_rails_app
+zombie_twitter_rails_app/exercise_files
+zombie_twitter_rails_app/.bundle
+zombie_twitter_rails_app/db/*.sqlite3
+zombie_twitter_rails_app/db/*.sqlite3-journal
+zombie_twitter_rails_app/db/*.sqlite3-*
+zombie_twitter_rails_app/log/*
+zombie_twitter_rails_app/tmp/*
+zombie_twitter_rails_app/!/log/.keep
+zombie_twitter_rails_app/!/tmp/.keep
+zombie_twitter_rails_app/storage/*
+zombie_twitter_rails_app/!/storage/.keep
+zombie_twitter_rails_app/public/assets
+zombie_twitter_rails_app/.byebug_history
+zombie_twitter_rails_app/config/master.key
+zombie_twitter_rails_app/public/packs
+zombie_twitter_rails_app/public/packs-test
+zombie_twitter_rails_app/node_modules
+zombie_twitter_rails_app/yarn-error.log
+zombie_twitter_rails_app/yarn-debug.log*
+zombie_twitter_rails_app/.yarn-integrity
+
+# entries from koans
+koans/exercise_files
+koans/.rspec_status
