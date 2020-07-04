@@ -13,12 +13,52 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
 class Proxy
+  attr_reader :instance_methods, :messages
   def initialize(target_object)
     @object = target_object
-    # ADD MORE CODE HERE
+    @instance_methods = target_object.methods - Object.methods
+    @messages = []
   end
 
-  # WRITE CODE HERE
+  def send_and_record(my_method)
+    @messages << my_method
+    @object.send(my_method)
+  end
+
+  def called?(my_method)
+    @messages.include?(my_method)
+  end
+
+  def number_of_times_called(my_method)
+    @messages.find_all { |m| m == my_method }.count
+  end
+
+  def channel
+    send_and_record(__method__)
+  end
+
+  def channel=(int)
+    @messages << __method__
+    @object.channel = int
+  end
+
+  def power
+    send_and_record(__method__)
+  end
+
+  def on?
+    send_and_record(__method__)
+  end
+
+  def upcase!
+    @messages << __method__
+    @object = @object.to_s.upcase
+  end
+
+  def split(delimiter = nil)
+    @messages << __method__
+    @object.to_s.split(delimiter)
+  end
 end
 
 # The proxy object should pass the following Koan:
@@ -49,7 +89,7 @@ class AboutProxyObjectProject < Neo::Koan
     tv.power
     tv.channel = 10
 
-    assert_equal [:power, :channel=], tv.messages
+    assert_equal %i[power channel=], tv.messages
   end
 
   def test_proxy_handles_invalid_messages
@@ -67,7 +107,7 @@ class AboutProxyObjectProject < Neo::Koan
     tv.power
 
     assert tv.called?(:power)
-    assert ! tv.called?(:channel)
+    assert !tv.called?(:channel)
   end
 
   def test_proxy_counts_method_calls
@@ -83,16 +123,15 @@ class AboutProxyObjectProject < Neo::Koan
   end
 
   def test_proxy_can_record_more_than_just_tv_objects
-    proxy = Proxy.new("Code Mash 2009")
+    proxy = Proxy.new('Code Mash 2009')
 
     proxy.upcase!
     result = proxy.split
 
-    assert_equal ["CODE", "MASH", "2009"], result
-    assert_equal [:upcase!, :split], proxy.messages
+    assert_equal %w[CODE MASH 2009], result
+    assert_equal %i[upcase! split], proxy.messages
   end
 end
-
 
 # ====================================================================
 # The following code is to support the testing of the Proxy class.  No
@@ -103,11 +142,11 @@ class Television
   attr_accessor :channel
 
   def power
-    if @power == :on
-      @power = :off
-    else
-      @power = :on
-    end
+    @power = if @power == :on
+               :off
+             else
+               :on
+             end
   end
 
   def on?
@@ -130,7 +169,7 @@ class TelevisionTest < Neo::Koan
     tv.power
     tv.power
 
-    assert ! tv.on?
+    assert !tv.on?
   end
 
   def test_edge_case_on_off
@@ -144,7 +183,7 @@ class TelevisionTest < Neo::Koan
 
     tv.power
 
-    assert ! tv.on?
+    assert !tv.on?
   end
 
   def test_can_set_the_channel
