@@ -82,6 +82,10 @@ rails-streaming-example/node_modules
 rails-streaming-example/yarn-error.log
 rails-streaming-example/.byebug_history
 
+# entries from game-of-life
+game-of-life/exercise_files
+game-of-life/.rspec_status
+
 # entries from simple_cms
 simple_cms/exercise_files
 simple_cms/.bundle
@@ -104,6 +108,10 @@ simple_cms/yarn-error.log
 simple_cms/yarn-debug.log*
 simple_cms/.yarn-integrity
 simple_cms/config/credentials/development.key
+
+# entries from google-search-count
+google-search-count/exercise_files
+google-search-count/.rspec_status
 
 # entries from devisedemo
 devisedemo/exercise_files

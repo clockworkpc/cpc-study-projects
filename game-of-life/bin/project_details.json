@@ -1,0 +1,10 @@
+{
+  "current": {
+    "module": "GameOfLife",
+    "spec": "game_of_life"
+  },
+  "new": {
+    "module": "GameOfLife",
+    "spec": "game_of_life"
+  }
+}
