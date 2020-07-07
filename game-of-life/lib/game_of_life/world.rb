@@ -1,6 +1,6 @@
 module GameOfLife
   class World
-    attr_reader :grid
+    attr_reader :grid, :range
 
     def initialize(size)
       @size = size
@@ -8,6 +8,7 @@ module GameOfLife
 
     def create_empty_grid
       grid = []
+
       @size.times do |y|
         @size.times do |x|
           grid << { x: x, y: y, life: false }
