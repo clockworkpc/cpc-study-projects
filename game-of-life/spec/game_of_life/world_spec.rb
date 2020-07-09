@@ -63,6 +63,41 @@ RSpec.describe GameOfLife::World do
     }
   end
 
+  let(:second_generation_report) do
+    {
+      row0: { col0: :dead, col1: :alive, col2: :alive },
+      row1: { col0: :alive, col1: :dead, col2: :dead },
+      row2: { col0: :dead, col1: :alive, col2: :alive }
+    }
+  end
+
+  let(:second_generation_grid_drawing) do
+    <<~HEREDOC
+      |---|---|---|
+      |   | x | x |
+      |---|---|---|
+      | x |   |   |
+      |---|---|---|
+      |   | x | x |
+      |---|---|---|
+    HEREDOC
+  end
+
+  let(:grid_second_generation) do
+    [
+      { x: -1, y: 1, life: false }, { x: 0, y: 1, life: true }, { x: 1, y: 1, life: true },
+      { x: -1, y: 0, life: true }, { x: 0, y: 0, life: false }, { x: 1, y: 0, life: false },
+      { x: -1, y: -1, life: false }, { x: 0, y: -1, life: true }, { x: 1, y: -1, life: true }
+    ]
+  end
+  # let(:second_generation_report) do
+  #   {
+  #     row0: { col0: :dead, col1: :happy, col2: :happy },
+  #     row1: { col0: :happy, col1: :dead, col2: :happy },
+  #     row2: { col0: :dead, col1: :happy, col2: :happy }
+  #   }
+  # end
+
   let(:first_cell_original) { { x: 0, y: 0, life: false } }
   let(:first_cell_toggled) { { x: 0, y: 0, life: true } }
 
@@ -166,10 +201,10 @@ RSpec.describe GameOfLife::World do
     end
 
     it 'toggles a cell' do
-      expect(@subject.toggle(0, 0)).to eq(first_cell_toggled)
-      expect(@subject.toggle(0, 0)).to eq(first_cell_original)
-      expect(@subject.toggle(0, 0)).to eq(first_cell_toggled)
-      expect(@subject.toggle(0, 0)).to eq(first_cell_original)
+      expect(@subject.toggle_cell(0, 0)).to eq(first_cell_toggled)
+      expect(@subject.toggle_cell(0, 0)).to eq(first_cell_original)
+      expect(@subject.toggle_cell(0, 0)).to eq(first_cell_toggled)
+      expect(@subject.toggle_cell(0, 0)).to eq(first_cell_original)
     end
 
     it 'returns current_status' do
@@ -226,6 +261,47 @@ RSpec.describe GameOfLife::World do
     it 'draws a populated grid' do
       drawing = @subject.draw_grid
       expect(drawing).to eq(populated_grid_drawing)
+    end
+
+    it 'keeps a cell dead if does not have three living neighbours' do
+      north_west = @subject.find_cell(-1, 1)
+      south_west = @subject.find_cell(-1, -1)
+      expect(@subject.future_status(north_west)).to eq(:dead)
+      expect(@subject.future_status(south_west)).to eq(:dead)
+    end
+
+    it 'kills a cell that has more than three neighbours' do
+      centre = @subject.find_cell(0, 0)
+      expect(@subject.future_status(centre)).to eq(:dead)
+    end
+
+    it 'keeps a cell alive if it has 2-3 neighbours' do
+      north = @subject.find_cell(0, 1)
+      north_east = @subject.find_cell(0, 1)
+      south = @subject.find_cell(0, -1)
+      expect(@subject.future_status(north)).to eq(:alive)
+      expect(@subject.future_status(north_east)).to eq(:alive)
+      expect(@subject.future_status(south)).to eq(:alive)
+    end
+
+    it 'vivifies a dead cell if it has three neighbours' do
+      west = @subject.find_cell(-1, 0)
+      south_east = @subject.find_cell(-1, 0)
+      expect(@subject.future_status(south_east)).to eq(:alive)
+    end
+
+    it 'delivers a report for tomorrow' do
+      expect(@subject.report_tomorrow).to eq(second_generation_report)
+    end
+
+    it 'toggles the grid according to the report for tomorrow' do
+      @subject.toggle_grid
+      expect(@subject.grid).to eq(grid_second_generation)
+    end
+
+    it 'draws the second generation grid' do
+      drawing = @subject.draw_grid
+      expect(drawing).to eq(second_generation_grid_drawing)
     end
   end
 end

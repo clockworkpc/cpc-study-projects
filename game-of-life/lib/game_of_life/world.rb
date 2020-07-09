@@ -108,8 +108,20 @@ module GameOfLife
       status = cell[:life] ? populated_status(cell) : empty_status(cell)
     end
 
-    def future_status(x, y)
-      :dead
+    def future_status(cell)
+      x, y = [cell[:x], cell[:y]]
+      current = current_status(x, y)
+      neighbours = neighbours(cell)
+
+      if current == :dead && neighbours.count != 3
+        :dead
+      elsif current == :crowded
+        :dead
+      elsif current == :happy
+        :alive
+      elsif current == :fertile
+        :alive
+      end
     end
 
     # rubocop:disable Metrics/AbcSize
@@ -132,16 +144,23 @@ module GameOfLife
     # rubocop:enable Metrics/AbcSize
     # rubocop:enable Metrics/MethodLength
 
-    def toggle(x, y)
-      cell = find_cell(x, y)
-      cell[:life] = cell[:life] != true
-      cell
+    def report_tomorrow
+      table = {}
+      key_index = 0
+      column_key = ->(i) { i >= @size ? i % @size : i }
+
+      grid.each_with_index do |cell, i|
+        key_index = (i / @size) if (i % @size).zero?
+        row = "row#{key_index}".to_sym
+        table[row] ||= {}
+        column = "col#{column_key.call(i)}".to_sym
+        table[row][column] = future_status(cell)
+      end
+
+      table
     end
 
-    def draw_row(row)
-    end
-
-    def horizantal_border
+    def horizontal_border
       body = Array.new(@size) { '---' }.join('|')
       ['|', body, '|'].join + "\n"
     end
@@ -156,15 +175,37 @@ module GameOfLife
     end
 
     def draw_grid
-      drawing = horizantal_border
+      drawing = horizontal_border
       report_today.each do |_k, columns|
         row = draw_row(columns)
         drawing += row
-        drawing += horizantal_border
+        drawing += horizontal_border
       end
 
       puts drawing
       drawing
+    end
+
+    def toggle_cell(x, y)
+      cell = find_cell(x, y)
+      cell[:life] = cell[:life] != true
+      cell
+    end
+
+    def toggle_grid
+      y = range.last + 1
+
+      report_tomorrow.values.each do |hsh|
+        y -= 1
+        x = range.first - 1
+        hsh.values.each do |status|
+          x += 1
+          cell = find_cell(x, y)
+          death = cell[:life] && status == :dead
+          rebirth = !cell[:life] && status == :alive
+          toggle_cell(x, y) if death || rebirth
+        end
+      end
     end
   end
 end
