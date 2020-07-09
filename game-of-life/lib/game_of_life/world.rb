@@ -138,8 +138,33 @@ module GameOfLife
       cell
     end
 
+    def draw_row(row)
+    end
+
+    def horizantal_border
+      body = Array.new(@size) { '---' }.join('|')
+      ['|', body, '|'].join + "\n"
+    end
+
+    def draw_row(columns)
+      body = columns.map do |_k, v|
+        empty = %i[dead fertile].include?(v)
+        empty ? '   ' : ' x '
+      end.join('|')
+
+      ['|', body, '|'].join + "\n"
+    end
+
     def draw_grid
-      # TODO
+      drawing = horizantal_border
+      report_today.each do |_k, columns|
+        row = draw_row(columns)
+        drawing += row
+        drawing += horizantal_border
+      end
+
+      puts drawing
+      drawing
     end
   end
 end

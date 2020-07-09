@@ -23,6 +23,30 @@ RSpec.describe GameOfLife::World do
     ]
   end
 
+  let(:empty_grid_drawing) do
+    <<~HEREDOC
+      |---|---|---|
+      |   |   |   |
+      |---|---|---|
+      |   |   |   |
+      |---|---|---|
+      |   |   |   |
+      |---|---|---|
+    HEREDOC
+  end
+
+  let(:populated_grid_drawing) do
+    <<~HEREDOC
+      |---|---|---|
+      |   | x | x |
+      |---|---|---|
+      |   | x | x |
+      |---|---|---|
+      |   | x |   |
+      |---|---|---|
+    HEREDOC
+  end
+
   let(:empty_world_report) do
     {
       row0: { col0: :dead, col1: :dead, col2: :dead },
@@ -172,6 +196,10 @@ RSpec.describe GameOfLife::World do
       cell = @subject.find_cell(x, y)
       expect(@subject.adjacent_cells(cell)).to eq(expectation)
     end
+
+    it 'draws an empty grid' do
+      expect(@subject.draw_grid).to eq(empty_grid_drawing)
+    end
   end
 
   describe 'Populated 3x3 World' do
@@ -193,6 +221,11 @@ RSpec.describe GameOfLife::World do
     it 'reports on the current status of the cells' do
       report = @subject.report_today
       expect(report).to eq(first_generation_report)
+    end
+
+    it 'draws a populated grid' do
+      drawing = @subject.draw_grid
+      expect(drawing).to eq(populated_grid_drawing)
     end
   end
 end
