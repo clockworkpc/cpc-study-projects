@@ -304,4 +304,18 @@ RSpec.describe GameOfLife::World do
       expect(drawing).to eq(second_generation_grid_drawing)
     end
   end
+
+  describe 'Randomly populated 3x3 World' do
+    before(:all) do
+      @subject = described_class.new(3)
+      @subject.create_empty_grid
+    end
+
+    it 'vivifies 4 random cells' do
+      @subject.seed_grid(4)
+      living_cells = @subject.grid.find_all { |cell| cell[:life] }
+      expect(living_cells.count).to eq(4)
+      @subject.draw_grid
+    end
+  end
 end

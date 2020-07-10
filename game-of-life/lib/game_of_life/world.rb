@@ -1,3 +1,5 @@
+require 'rainbow'
+
 module GameOfLife
   class World
     def initialize(size)
@@ -47,7 +49,7 @@ module GameOfLife
     end
 
     def grid
-      @grid ||= create_grid
+      @grid ||= create_empty_grid
     end
 
     def relative_position_to_cell(cell, neighbour)
@@ -168,7 +170,7 @@ module GameOfLife
     def draw_row(columns)
       body = columns.map do |_k, v|
         empty = %i[dead fertile].include?(v)
-        empty ? '   ' : ' x '
+        empty ? '   ' : Rainbow(' x ').green
       end.join('|')
 
       ['|', body, '|'].join + "\n"
@@ -206,6 +208,11 @@ module GameOfLife
           toggle_cell(x, y) if death || rebirth
         end
       end
+    end
+
+    def seed_grid(n)
+      cells = grid.sample(n)
+      cells.each { |c| c[:life] = true }
     end
   end
 end
