@@ -2,6 +2,7 @@ require 'rainbow'
 
 module GameOfLife
   class World
+    attr_reader :size
     def initialize(size)
       @size = size
     end
@@ -170,7 +171,7 @@ module GameOfLife
     def draw_row(columns)
       body = columns.map do |_k, v|
         empty = %i[dead fertile].include?(v)
-        empty ? '   ' : Rainbow(' x ').green
+        empty ? '   ' : ' x '
       end.join('|')
 
       ['|', body, '|'].join + "\n"
@@ -183,8 +184,6 @@ module GameOfLife
         drawing += row
         drawing += horizontal_border
       end
-
-      puts drawing
       drawing
     end
 
@@ -213,6 +212,10 @@ module GameOfLife
     def seed_grid(n)
       cells = grid.sample(n)
       cells.each { |c| c[:life] = true }
+    end
+
+    def population
+      grid.find_all { |c| c[:life] }.count
     end
   end
 end

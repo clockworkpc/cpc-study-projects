@@ -7,8 +7,10 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'guard-shell'
+  gem 'rainbow'
   gem 'rb-fsevent', '~> 0.9'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
+  gem 'tty'
 end
