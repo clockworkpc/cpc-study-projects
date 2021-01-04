@@ -1,9 +1,9 @@
 example_id                                          | status | run_time        |
 --------------------------------------------------- | ------ | --------------- |
-./spec/advent_of_code/expense_report_spec.rb[1:1]   | failed | 1.36 seconds    |
-./spec/advent_of_code/expense_report_spec.rb[1:2]   | failed | 0.43703 seconds |
-./spec/advent_of_code/expense_report_spec.rb[1:3]   | failed | 0.32734 seconds |
-./spec/advent_of_code/expense_report_spec.rb[1:4]   | failed | 0.35276 seconds |
-./spec/advent_of_code/expense_report_spec.rb[1:5]   | failed | 0.35014 seconds |
+./spec/advent_of_code/expense_report_spec.rb[1:1]   | passed | 2.26 seconds    |
+./spec/advent_of_code/expense_report_spec.rb[1:2]   | passed | 0.6146 seconds  |
+./spec/advent_of_code/expense_report_spec.rb[1:3]   | passed | 0.46081 seconds |
+./spec/advent_of_code/expense_report_spec.rb[1:4]   | failed | 0.54548 seconds |
+./spec/advent_of_code/expense_report_spec.rb[1:5]   | failed | 0.61602 seconds |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:1] | passed | 0.00185 seconds |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:2] | passed | 0.00044 seconds |

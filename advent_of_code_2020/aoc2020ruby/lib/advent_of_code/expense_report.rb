@@ -8,14 +8,21 @@ module AdventOfCode
       # start with first element in array
       # running total
       m = @expenses.each_with_object([]) do |n, ary|
+        ary = []
         ary << n if (ary.sum + n) <= req
         rest = @expenses[(@expenses.index(n) + 1)..-1]
         next_int = rest.find { |x| n + x <= req }
 
         next if next_int.nil?
+
+        ary << next_int
+
+        break ary if ary.sum == req && ary.count == count
       end
 
-      require 'pry'; binding.pry
+      require 'pry'; binding.pry if count == 3
+
+      m
 
       # m = @expenses.each_with_object([]) do |n, ary|
 
