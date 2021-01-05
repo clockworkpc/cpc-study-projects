@@ -1,54 +1,46 @@
 module AdventOfCode
   class ExpenseReport
     def initialize(expenses)
-      @expenses = expenses
+      @expenses = expenses.sort.reverse
     end
 
-    def add_up_elements_to_req(array: [], count: 2, req: 2020)
-      array = array.empty? ? @expenses : array
+    def find_next_int(ary, array_remainder, req_sum, req_count)
+      array_remainder.find do |x|
+        x_sum = ary.sum + x
+        next if x_sum > req_sum
 
-      array.each_with_object([]) do |n, ary|
+        last_int = ary.count == req_count - 1
+        last_int ? x_sum == req_sum : x_sum <= req_sum
+      end
+    end
+
+    def add_up_remaining_elements(ary, array_remainder, req_sum, req_count)
+      array_remainder.count.times do
+        next_int = find_next_int(ary, array_remainder, req_sum, req_count)
+        next if next_int.nil?
+
+        break if ary.sum == req_sum && ary.count == req_count
+
+        ary << next_int
+        array_remainder.shift
+      end
+    end
+
+    def special_expenses(req_count: 2, req_sum: 2020)
+      @expenses.each_with_object([]) do |n, ary|
         ary << n
-        pp n
-        puts 'before'
-        pp ary
+        array_remainder = @expenses[(@expenses.index(n) + 1)..-1]
+        add_up_remaining_elements(ary, array_remainder, req_sum, req_count)
 
-        rest = array[(array.index(n) + 1)..-1]
+        break ary if ary.sum == req_sum && ary.count == req_count
 
-        rest.each do |n1|
-          ary << n1 if ary.sum + n1 <= req
-          break ary if ary.count == count && ary.sum == req
-        end
-
-        puts 'after'
-        pp ary
-        ary = []
-        pp ary
+        ary.count.times { ary.shift }
       end
     end
 
-    def special_expenses(count: 2, req: 2020)
-      if count == 2
-        @expenses.each_with_object([]) do |n, ary|
-          ary << n if (ary.sum + n) <= req
-          rest = @expenses[(@expenses.index(n) + 1)..-1]
-          next_int = rest.find { |x| n + x <= req }
-
-          next if next_int.nil?
-
-          ary << next_int
-
-          break ary if ary.sum == req && ary.count == count
-
-          ary = [] if @expenses[-1] == @expenses[@expenses.index(n)]
-        end
-      else
-        add_up_elements_to_req(count: 3)
-      end
-    end
-
-    def special_expenses_product(count: 2)
-      special_expenses(count: count).reject(&:zero?).inject(:*)
+    def special_expenses_product(req_count: 2, req_sum: 2020)
+      special_expenses(req_count: req_count, req_sum: req_sum)
+        .reject(&:zero?).inject(:*)
     end
   end
 end

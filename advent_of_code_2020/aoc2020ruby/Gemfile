@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'did_you_mean'
   gem 'guard', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'guard-shell'
+  gem 'pry-byebug'
   gem 'rb-fsevent', '~> 0.9'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
