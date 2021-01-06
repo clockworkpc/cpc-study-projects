@@ -1,4 +1,4 @@
-require './lib/advent_of_code/password_checker'
+require './lib/advent_of_code/sled_password_checker'
 
 RSpec.describe AdventOfCode::SledPasswordChecker do
   let(:sample_input_text) { '1-3 a abcde' }
