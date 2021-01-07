@@ -39,7 +39,15 @@ RSpec.describe AdventOfCode::TobogganPath do
   end
 
   it 'should expand the map to the right' do
-    expect(subject.expand_map(line: sample_lines, direction: :right))
-      .to eq(sample_lines_expanded)
+    res = subject.expand_map(lines: sample_lines,
+                             direction: :right,
+                             int: 1)
+    res.each_with_index do |line, i|
+      puts "index: #{i}"
+      puts line
+      puts sample_lines_expanded[i]
+    end
+
+    expect(res).to eq(sample_lines_expanded)
   end
 end
