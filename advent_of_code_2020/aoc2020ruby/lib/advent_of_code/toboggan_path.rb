@@ -10,7 +10,6 @@ module AdventOfCode
     def expand_map(lines:, direction:, int:)
       additions = ->(line) { Array.new(int) { line }.join }
       if direction == :right
-        require 'pry'; binding.pry
         lines.map { |line| line + additions[line] }
       elsif direction == :left
         lines.map { |line| additions[line] + line }

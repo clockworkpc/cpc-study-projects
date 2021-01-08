@@ -1,4 +1,5 @@
 require './lib/advent_of_code/toboggan_path'
+require 'rainbow'
 
 RSpec.describe AdventOfCode::TobogganPath do
   let(:day_03_input) { File.readlines('./spec/fixtures/day_03_input.txt') }
@@ -31,6 +32,7 @@ RSpec.describe AdventOfCode::TobogganPath do
       .#.#.#....#.#.#.#....#
       .#........#.#........#
       #.##...#...#.##...#...
+      #...##....##...##....#
       ##...##....#...##....#
       .#..#...#.#.#..#...#.#
     HEREDOC
@@ -43,7 +45,7 @@ RSpec.describe AdventOfCode::TobogganPath do
                              direction: :right,
                              int: 1)
     res.each_with_index do |line, i|
-      puts "index: #{i}"
+      puts "index: #{i}: match? #{Rainbow(line.eql?(sample_lines_expanded[i])).red}"
       puts line
       puts sample_lines_expanded[i]
     end

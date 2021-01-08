@@ -99,6 +99,7 @@ DEPENDENCIES
   guard-rubocop
   guard-shell
   pry-byebug
+  rainbow
   rake
   rb-fsevent (~> 0.9)
   rspec
