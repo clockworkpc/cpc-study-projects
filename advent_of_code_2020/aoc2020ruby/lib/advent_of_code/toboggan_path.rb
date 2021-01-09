@@ -1,5 +1,9 @@
 module AdventOfCode
   class TobogganPath
+    def initialize(lines)
+      @map = lines
+    end
+
     def map(lines)
       ratio = lines.count / lines.first.length
 

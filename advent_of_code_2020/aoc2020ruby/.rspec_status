@@ -29,4 +29,5 @@ example_id                                                   | status | run_time
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:5] | passed | 0.00005 seconds |
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:6] | passed | 0.00006 seconds |
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:7] | passed | 0.02589 seconds |
-./spec/advent_of_code/toboggan_path_spec.rb[1:1]             | failed | 0.08613 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:1]           | passed | 0.00184 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:2]           | failed | 0.00034 seconds |

@@ -33,23 +33,29 @@ RSpec.describe AdventOfCode::TobogganPath do
       .#........#.#........#
       #.##...#...#.##...#...
       #...##....##...##....#
-      ##...##....#...##....#
       .#..#...#.#.#..#...#.#
     HEREDOC
 
     txt.split("\n")
   end
 
-  it 'should expand the map to the right' do
-    res = subject.expand_map(lines: sample_lines,
-                             direction: :right,
-                             int: 1)
-    res.each_with_index do |line, i|
-      puts "index: #{i}: match? #{Rainbow(line.eql?(sample_lines_expanded[i])).red}"
-      puts line
-      puts sample_lines_expanded[i]
+  context 'Sample lines' do
+    subject { described_class.new(sample_lines) }
+
+    it 'should expand the map to the right' do
+      res = subject.expand_map(lines: sample_lines,
+                               direction: :right,
+                               int: 1)
+
+      expect(res.count).to eq(sample_lines_expanded.count)
+      expect(res).to eq(sample_lines_expanded)
+      expect(res).to eq(sample_lines_expanded)
     end
 
-    expect(res).to eq(sample_lines_expanded)
+    it 'returns the dimensions of the current map' do
+      res = subject.current_map(lines: sample_lines)
+      expect(res[:height]).to eq(11)
+      expect(res[:width]).to eq(11)
+    end
   end
 end
