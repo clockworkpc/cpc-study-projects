@@ -49,13 +49,20 @@ RSpec.describe AdventOfCode::TobogganPath do
 
       expect(res.count).to eq(sample_lines_expanded.count)
       expect(res).to eq(sample_lines_expanded)
-      expect(res).to eq(sample_lines_expanded)
     end
 
     it 'returns the dimensions of the current map' do
-      res = subject.current_map(lines: sample_lines)
+      res = subject.current_map
       expect(res[:height]).to eq(11)
       expect(res[:width]).to eq(11)
+    end
+
+    it 'returns a starting position of {x: 0, y: 0}' do
+      expect(subject.current_position).to eq([0, 0])
+    end
+
+    it 'moves along the X and Y axes' do
+      expect(subject.move(x: 1, y: -3)).to eq([1, -3])
     end
   end
 end
