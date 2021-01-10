@@ -43,9 +43,9 @@ RSpec.describe AdventOfCode::TobogganPath do
 
   let(:status_log_2_moves) do
     [
-      { x: 0, y: 0, status: :open },
-      { x: 3, y: -1, status: :open },
-      { x: 6, y: -2, status: :tree }
+      { position: { x: 0, y: 0 }, status: :open },
+      { position: { x: 3, y: -1 }, status: :open },
+      { position: { x: 6, y: -2 }, status: :tree }
     ]
   end
 
@@ -85,7 +85,7 @@ RSpec.describe AdventOfCode::TobogganPath do
 
     it 'moves right and down twice' do
       s = sample
-      s.travel(times: 2, right: 3, down: 1)
+      s.travel(moves: 2, right: 3, down: 1)
       expect(s.current_position).to eq({ x: 6, y: -2 })
       expect(s.status_log).to eq(status_log_2_moves)
     end

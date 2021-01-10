@@ -1,9 +1,10 @@
 module AdventOfCode
   class TobogganPath
+    attr_accessor :map, :position, :status_log
     def initialize(lines)
       @map = lines
       @position = { x: 0, y: 0 }
-      @status_log = []
+      @status_log = [{ position: @position, status: :open }]
     end
 
     def current_map
@@ -27,8 +28,12 @@ module AdventOfCode
     end
 
     def travel(moves:, up: nil, down: nil, left: nil, right: nil)
-      # Move
-      # Update travel log
+      require 'pry'; binding.pry
+      moves.times do
+        move(up: up, down: down, left: left, right: right)
+        @status_log << { position: @position, status: status_at_current_position }
+        require 'pry'; binding.pry
+      end
     end
 
     def move_straight_to_bottom(up: nil, down: nil, left: nil, right: nil)
