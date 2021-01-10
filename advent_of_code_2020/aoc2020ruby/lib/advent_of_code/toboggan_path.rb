@@ -2,7 +2,8 @@ module AdventOfCode
   class TobogganPath
     def initialize(lines)
       @map = lines
-      @position = [0, 0]
+      @position = { x: 0, y: 0 }
+      @status_log = []
     end
 
     def current_map
@@ -17,11 +18,41 @@ module AdventOfCode
       @position
     end
 
-    def move(x:, y:)
-      @position[0] += x
-      @position[1] += y
+    def move(up: nil, down: nil, left: nil, right: nil)
+      x = right || (left * -1)
+      y = (down * -1) || up
+      @position[:x] += x
+      @position[:y] += y
       current_position
     end
+
+    def travel(moves:, up: nil, down: nil, left: nil, right: nil)
+      # Move
+      # Update travel log
+    end
+
+    def move_straight_to_bottom(up: nil, down: nil, left: nil, right: nil)
+      (@map.count - 1).times do
+        x = right || (left * -1)
+        y = (down * -1) || up
+        move(x: x, y: y)
+      end
+    end
+
+    def status_at_location(x:, y:)
+      location_row = @map[y]
+
+      case location_row[x]
+      when '.'
+        :open
+      when '#'
+        :tree
+      end
+    end
+
+    def status_at_current_position
+      status_at_location(x: current_position[:x], y: current_position[:y])
+     end
 
     def expand_map(lines:, direction:, int:)
       additions = ->(line) { Array.new(int) { line }.join }

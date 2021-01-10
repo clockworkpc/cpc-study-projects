@@ -29,7 +29,11 @@ example_id                                                   | status | run_time
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:5] | passed | 0.00005 seconds |
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:6] | passed | 0.00006 seconds |
 ./spec/advent_of_code/toboggan_password_checker_spec.rb[1:7] | passed | 0.02589 seconds |
-./spec/advent_of_code/toboggan_path_spec.rb[1:1:1]           | passed | 0.00402 seconds |
-./spec/advent_of_code/toboggan_path_spec.rb[1:1:2]           | passed | 0.00043 seconds |
-./spec/advent_of_code/toboggan_path_spec.rb[1:1:3]           | passed | 0.00058 seconds |
-./spec/advent_of_code/toboggan_path_spec.rb[1:1:4]           | passed | 0.00075 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:1]           | passed | 0.00432 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:2]           | passed | 0.00055 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:3]           | passed | 0.00029 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:4]           | passed | 0.00023 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:5]           | passed | 0.00364 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:6]           | passed | 0.00063 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:7]           | failed | 0.00055 seconds |
+./spec/advent_of_code/toboggan_path_spec.rb[1:1:8]           | passed | 0.00019 seconds |
