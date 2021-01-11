@@ -4,7 +4,7 @@ module AdventOfCode
     def initialize(lines)
       @map = lines
       @position = { x: 0, y: 0 }
-      @status_log = [{ position: @position, status: :open }]
+      @status_log = [{ position: { x: 0, y: 0 }, status: :open }]
     end
 
     def current_map
@@ -16,7 +16,9 @@ module AdventOfCode
     end
 
     def current_position
-      @position
+      x = @position[:x]
+      y = @position[:y]
+      { x: x, y: y }
     end
 
     def move(up: nil, down: nil, left: nil, right: nil)
@@ -24,16 +26,15 @@ module AdventOfCode
       y = (down * -1) || up
       @position[:x] += x
       @position[:y] += y
-      current_position
+      new_x = @position[:x]
+      new_y = @position[:y]
+      @status_log << { position: { x: new_x, y: new_y }, status: status_at_current_position }
+      pp @status_log
     end
 
     def travel(moves:, up: nil, down: nil, left: nil, right: nil)
-      require 'pry'; binding.pry
-      moves.times do
-        move(up: up, down: down, left: left, right: right)
-        @status_log << { position: @position, status: status_at_current_position }
-        require 'pry'; binding.pry
-      end
+      pp @status_log
+      moves.times { move(up: up, down: down, left: left, right: right) }
     end
 
     def move_straight_to_bottom(up: nil, down: nil, left: nil, right: nil)
@@ -45,9 +46,10 @@ module AdventOfCode
     end
 
     def status_at_location(x:, y:)
-      location_row = @map[y]
+      location_row = @map[y.abs]
+      current_square = location_row[x]
 
-      case location_row[x]
+      case current_square
       when '.'
         :open
       when '#'

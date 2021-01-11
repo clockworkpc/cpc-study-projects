@@ -70,7 +70,9 @@ RSpec.describe AdventOfCode::TobogganPath do
     end
 
     it 'moves along the X and Y axes' do
-      expect(sample.move(right: 3, down: 1)).to eq(x: 3, y: -1)
+      s = sample
+      s.move(right: 3, down: 1)
+      expect(s.current_position).to eq(x: 3, y: -1)
     end
 
     it 'returns :open at {x: 3, y: -1}' do
@@ -90,7 +92,12 @@ RSpec.describe AdventOfCode::TobogganPath do
       expect(s.status_log).to eq(status_log_2_moves)
     end
 
-    it 'collects the status at each position after move' do
+    it 'expands the map to the right when "x" > map width' do
+      s = sample
+      s.move(right: 12, down: 1)
+      expect(s.current_position).to eq(x: 12, y: -1)
+      expect(s.map.count).to eq(11)
+      expect(s.map.first.length).to eq(22)
     end
 
     # it 'travels a trajectory to the bottom' do
