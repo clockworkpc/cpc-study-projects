@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://adventofcode.com/2020/day/3 -->
-<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en-us">
+<head>
+<meta charset="utf-8"/>
 <title>Day 3 - Advent of Code 2020</title>
 <!--[if lt IE 9]><script src="/static/html5.js"></script><![endif]-->
-<link href="./Day 3 - Advent of Code 2020_files/css" rel="stylesheet" type="text/css"><script async="" src="./Day 3 - Advent of Code 2020_files/analytics.js"></script><script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
-<link rel="stylesheet" type="text/css" href="./Day 3 - Advent of Code 2020_files/style.css">
-<link rel="stylesheet alternate" type="text/css" href="./Day 3 - Advent of Code 2020_files/highcontrast.css" title="High Contrast">
-<link rel="shortcut icon" href="https://adventofcode.com/favicon.png">
+<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet alternate" type="text/css" href="/static/highcontrast.css?0" title="High Contrast"/>
+<link rel="shortcut icon" href="/favicon.png"/>
 </head><!--
 
 
@@ -87,15 +87,15 @@ If you'd like to hang out, I'm @ericwastl on Twitter.
 
 -->
 <body>
-<header><div><h1 class="title-global"><a href="https://adventofcode.com/">Advent of Code</a></h1><nav><ul><li><a href="https://adventofcode.com/2020/about">[About]</a></li><li><a href="https://adventofcode.com/2020/events">[Events]</a></li><li><a href="https://teespring.com/stores/advent-of-code" target="_blank">[Shop]</a></li><li><a href="https://adventofcode.com/2020/settings">[Settings]</a></li><li><a href="https://adventofcode.com/2020/auth/logout">[Log Out]</a></li></ul></nav><div class="user">Alexander Garber <span class="star-count">4*</span></div></div><div><h1 class="title-event">&nbsp;&nbsp;&nbsp;<span class="title-event-wrap">&lt;y&gt;</span><a href="https://adventofcode.com/2020">2020</a><span class="title-event-wrap">&lt;/y&gt;</span></h1><nav><ul><li><a href="https://adventofcode.com/2020">[Calendar]</a></li><li><a href="https://adventofcode.com/2020/support">[AoC++]</a></li><li><a href="https://adventofcode.com/2020/sponsors">[Sponsors]</a></li><li><a href="https://adventofcode.com/2020/leaderboard">[Leaderboard]</a></li><li><a href="https://adventofcode.com/2020/stats">[Stats]</a></li></ul></nav></div></header>
+<header><div><h1 class="title-global"><a href="/">Advent of Code</a></h1><nav><ul><li><a href="/2020/about">[About]</a></li><li><a href="/2020/events">[Events]</a></li><li><a href="https://teespring.com/stores/advent-of-code" target="_blank">[Shop]</a></li><li><a href="/2020/settings">[Settings]</a></li><li><a href="/2020/auth/logout">[Log Out]</a></li></ul></nav><div class="user">Alexander Garber <span class="star-count">4*</span></div></div><div><h1 class="title-event">&nbsp;&nbsp;&nbsp;<span class="title-event-wrap">var y=</span><a href="/2020">2020</a><span class="title-event-wrap">;</span></h1><nav><ul><li><a href="/2020">[Calendar]</a></li><li><a href="/2020/support">[AoC++]</a></li><li><a href="/2020/sponsors">[Sponsors]</a></li><li><a href="/2020/leaderboard">[Leaderboard]</a></li><li><a href="/2020/stats">[Stats]</a></li></ul></nav></div></header>
 
 <div id="sidebar">
-<div id="sponsor"><div class="quiet">Our <a href="https://adventofcode.com/2020/sponsors">sponsors</a> help make Advent of Code possible:</div><div class="sponsor"><a href="https://formlabs.com/" target="_blank" onclick="if(ga)ga(&#39;send&#39;,&#39;event&#39;,&#39;sponsor&#39;,&#39;sidebar&#39;,this.href);" rel="noopener">Formlabs</a> - Printing the innovation of tomorrow, today.</div></div>
+<div id="sponsor"><div class="quiet">Our <a href="/2020/sponsors">sponsors</a> help make Advent of Code possible:</div><div class="sponsor"><a href="https://www.educative.io/adventofcode" target="_blank" onclick="if(ga)ga('send','event','sponsor','sidebar',this.href);" rel="noopener">Educative.io</a> - From CSS to System Design, gain in-demand tech skills at the speed you want. Text-based courses with live coding environments help you learn without the fluff</div></div>
 </div><!--/sidebar-->
 
 <main>
 <script>window.addEventListener('click', function(e,s,r){if(e.target.nodeName==='CODE'&&e.detail===3){s=window.getSelection();s.removeAllRanges();r=document.createRange();r.selectNodeContents(e.target);s.addRange(r);}});</script>
-<article class="day-desc"><h2>--- Day 3: Toboggan Trajectory ---</h2><p>With the toboggan login problems resolved, you set off toward the airport. While travel by toboggan might be easy, it's certainly not safe: there's <span title="It looks like the toboggan steering system even runs on Intcode! Good thing you don&#39;t have to modify it.">very minimal steering</span> and the area is covered in trees. You'll need to see which angles will take you near the fewest trees.</p>
+<article class="day-desc"><h2>--- Day 3: Toboggan Trajectory ---</h2><p>With the toboggan login problems resolved, you set off toward the airport. While travel by toboggan might be easy, it's certainly not safe: there's <span title="It looks like the toboggan steering system even runs on Intcode! Good thing you don't have to modify it.">very minimal steering</span> and the area is covered in trees. You'll need to see which angles will take you near the fewest trees.</p>
 <p>Due to the local geology, trees in this area only grow on exact integer coordinates in a grid. You make a map (your puzzle input) of the open squares (<code>.</code>) and trees (<code>#</code>) you can see. For example:</p>
 <pre><code>..##.......
 #...#...#..
@@ -141,11 +141,12 @@ If you'd like to hang out, I'm @ericwastl on Twitter.
 <p>In this example, traversing the map using this slope would cause you to encounter <code><em>7</em></code> trees.</p>
 <p>Starting at the top-left corner of your map and following a slope of right 3 and down 1, <em>how many trees would you encounter?</em></p>
 </article>
-<p>To begin, <a href="https://adventofcode.com/2020/day/3/input" target="_blank">get your puzzle input</a>.</p>
-<form method="post" action="https://adventofcode.com/2020/day/3/answer"><input type="hidden" name="level" value="1"><p>Answer: <input type="text" name="answer" autocomplete="off"> <input type="submit" value="[Submit]"></p></form>
+<p>To begin, <a href="3/input" target="_blank">get your puzzle input</a>.</p>
+<form method="post" action="3/answer"><input type="hidden" name="level" value="1"/><p>Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/></p></form>
 <p>You can also <span class="share">[Share<span class="share-content">on
   <a href="https://twitter.com/intent/tweet?text=%22Toboggan+Trajectory%22+%2D+Day+3+%2D+Advent+of+Code+2020&amp;url=https%3A%2F%2Fadventofcode%2Ecom%2F2020%2Fday%2F3&amp;related=ericwastl&amp;hashtags=AdventOfCode" target="_blank">Twitter</a>
-  <a href="javascript:void(0);" onclick="var mastodon_instance=prompt(&#39;Mastodon Instance / Server Name?&#39;); if(typeof mastodon_instance===&#39;string&#39; &amp;&amp; mastodon_instance.length){this.href=&#39;https://&#39;+mastodon_instance+&#39;/share?text=%22Toboggan+Trajectory%22+%2D+Day+3+%2D+Advent+of+Code+2020+%23AdventOfCode+https%3A%2F%2Fadventofcode%2Ecom%2F2020%2Fday%2F3&#39;}else{return false;}" target="_blank">Mastodon</a></span>]</span> this puzzle.</p>
+  <a href="javascript:void(0);" onclick="var mastodon_instance=prompt('Mastodon Instance / Server Name?'); if(typeof mastodon_instance==='string' && mastodon_instance.length){this.href='https://'+mastodon_instance+'/share?text=%22Toboggan+Trajectory%22+%2D+Day+3+%2D+Advent+of+Code+2020+%23AdventOfCode+https%3A%2F%2Fadventofcode%2Ecom%2F2020%2Fday%2F3'}else{return false;}" target="_blank">Mastodon</a
+></span>]</span> this puzzle.</p>
 </main>
 
 <!-- ga -->
@@ -159,5 +160,5 @@ ga('set', 'anonymizeIp', true);
 ga('send', 'pageview');
 </script>
 <!-- /ga -->
-
-</body></html>
+</body>
+</html>
