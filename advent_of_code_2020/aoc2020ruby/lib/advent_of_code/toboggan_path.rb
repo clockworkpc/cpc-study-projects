@@ -21,7 +21,31 @@ module AdventOfCode
       { x: x, y: y }
     end
 
+    def expand_map(map_ary:, direction:, int:)
+      additions = ->(line) { Array.new(int) { line }.join }
+      res = if direction == :right
+              map_ary.map { |line| line + additions[line] }
+            elsif direction == :left
+              map_ary.map { |line| additions[line] + line }
+      end
+      res
+    end
+
+    def expand_current_map(direction:, int:)
+      expanded_map = expand_map(map_ary: @map, direction: direction, int: int)
+      @map = expanded_map
+    end
+
+    def approaching_edge?(map_ary:, right: nil, left: nil)
+      new_y = current_position[:y].abs + (right || left).abs
+      current_map[:width] <= new_y
+    end
+
     def move(up: nil, down: nil, left: nil, right: nil)
+      if approaching_edge?(map_ary: @map, right: right, left: left)
+        direction = right ? :right : :left
+        expand_current_map(direction: direction, int: 1)
+      end
       x = right || (left * -1)
       y = (down * -1) || up
       @position[:x] += x
@@ -29,11 +53,9 @@ module AdventOfCode
       new_x = @position[:x]
       new_y = @position[:y]
       @status_log << { position: { x: new_x, y: new_y }, status: status_at_current_position }
-      pp @status_log
     end
 
     def travel(moves:, up: nil, down: nil, left: nil, right: nil)
-      pp @status_log
       moves.times { move(up: up, down: down, left: left, right: right) }
     end
 
@@ -60,18 +82,5 @@ module AdventOfCode
     def status_at_current_position
       status_at_location(x: current_position[:x], y: current_position[:y])
      end
-
-    def expand_map(lines:, direction:, int:)
-      additions = ->(line) { Array.new(int) { line }.join }
-      if direction == :right
-        lines.map { |line| line + additions[line] }
-      elsif direction == :left
-        lines.map { |line| additions[line] + line }
-      end
-    end
-
-    def expand_current_map(direction:, int:)
-      expand_map(map: @map, direction: direction, int: int)
-    end
   end
 end

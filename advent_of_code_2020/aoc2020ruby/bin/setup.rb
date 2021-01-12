@@ -52,7 +52,6 @@ class ProjectRenamer
       begin
         File.rename(basename, new_basename)
       rescue ExceptionName
-        binding.pry
       end
     end
   end

@@ -50,15 +50,6 @@ RSpec.describe AdventOfCode::TobogganPath do
   end
 
   context 'Sample lines' do
-    it 'should expand the map to the right' do
-      res = sample.expand_map(lines: sample_lines,
-                              direction: :right,
-                              int: 1)
-
-      expect(res.count).to eq(sample_lines_expanded.count)
-      expect(res).to eq(sample_lines_expanded)
-    end
-
     it 'returns the dimensions of the current map' do
       res = sample.current_map
       expect(res[:height]).to eq(11)
@@ -92,12 +83,26 @@ RSpec.describe AdventOfCode::TobogganPath do
       expect(s.status_log).to eq(status_log_2_moves)
     end
 
-    it 'expands the map to the right when "x" > map width' do
+    it 'expands the map to the right' do
       s = sample
-      s.move(right: 12, down: 1)
-      expect(s.current_position).to eq(x: 12, y: -1)
+      s.expand_current_map(direction: :right, int: 1)
+      expect(s.current_map[:width]).to eq(22)
+    end
+
+    it 'expands the map to the right by 1 when approaching the edge' do
+      s = sample
+      s.move(right: 10, down: 1)
+      expect(s.current_position).to eq(x: 10, y: -1)
       expect(s.map.count).to eq(11)
       expect(s.map.first.length).to eq(22)
+    end
+
+    it 'expands the map to the right by 2 when approaching the edge with a big jump' do
+      s = sample
+      s.move(right: 21, down: 1)
+      expect(s.current_position).to eq(x: 10, y: -1)
+      expect(s.map.count).to eq(11)
+      expect(s.map.first.length).to eq(33)
     end
 
     # it 'travels a trajectory to the bottom' do
