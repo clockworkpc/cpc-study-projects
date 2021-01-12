@@ -37,15 +37,23 @@ module AdventOfCode
     end
 
     def approaching_edge?(map_ary:, right: nil, left: nil)
-      new_y = current_position[:y].abs + (right || left).abs
-      current_map[:width] <= new_y
+      new_x = current_position[:x].abs + (right || left).abs
+      current_map[:width] - 1 <= new_x
+    end
+
+    def expansion_factor(x)
+      post_move_x = current_position[:x] + x
+      post_move_x / current_map[:width]
     end
 
     def move(up: nil, down: nil, left: nil, right: nil)
       if approaching_edge?(map_ary: @map, right: right, left: left)
         direction = right ? :right : :left
-        expand_current_map(direction: direction, int: 1)
+        int = expansion_factor((right || left).abs)
+        expand_current_map(direction: direction, int: int) unless int <= 0
       end
+      pp current_position
+      pp current_map
       x = right || (left * -1)
       y = (down * -1) || up
       @position[:x] += x
@@ -59,11 +67,9 @@ module AdventOfCode
       moves.times { move(up: up, down: down, left: left, right: right) }
     end
 
-    def move_straight_to_bottom(up: nil, down: nil, left: nil, right: nil)
+    def travel_all_the_way(up: nil, down: nil, left: nil, right: nil)
       (@map.count - 1).times do
-        x = right || (left * -1)
-        y = (down * -1) || up
-        move(x: x, y: y)
+        move(right: right, down: down, left: left, up: up)
       end
     end
 

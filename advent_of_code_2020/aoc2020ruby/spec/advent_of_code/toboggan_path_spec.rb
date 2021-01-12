@@ -91,25 +91,40 @@ RSpec.describe AdventOfCode::TobogganPath do
 
     it 'expands the map to the right by 1 when approaching the edge' do
       s = sample
-      s.move(right: 10, down: 1)
-      expect(s.current_position).to eq(x: 10, y: -1)
-      expect(s.map.count).to eq(11)
-      expect(s.map.first.length).to eq(22)
+      s.move(right: 11, down: 1)
+      expect(s.current_position).to eq(x: 11, y: -1)
+      expect(s.current_map[:height]).to eq(11)
+      expect(s.current_map[:width]).to eq(22)
     end
 
     it 'expands the map to the right by 2 when approaching the edge with a big jump' do
       s = sample
-      s.move(right: 21, down: 1)
-      expect(s.current_position).to eq(x: 10, y: -1)
+      s.move(right: 22, down: 1)
+      expect(s.current_position).to eq(x: 22, y: -1)
       expect(s.map.count).to eq(11)
       expect(s.map.first.length).to eq(33)
     end
 
-    # it 'travels a trajectory to the bottom' do
-    #   s = sample
-    #   expect(s.follow_trajectory(right: 3, down: 1)).to eq()
-    #   s.move_straight_to_bottom(down: 1, right: 3)
-    #   expect(s.current_position).to eq([10, -30])
-    # end
+    it 'travels along a trajectory' do
+      s = sample
+      s.travel(moves: 3, right: 3, down: 1)
+      expect(s.current_position).to eq(x: 9, y: -3)
+    end
+
+    it 'travels along a trajectory and expands the map' do
+      s = sample
+      s.travel(moves: 4, right: 3, down: 1)
+      expect(s.current_position).to eq(x: 12, y: -4)
+      expect(s.current_map[:height]).to eq(11)
+      expect(s.current_map[:width]).to eq(22)
+    end
+
+    it 'travels along a trajectory to the bottom' do
+      s = sample
+      s.travel_all_the_way(right: 3, down: 1)
+      expect(s.current_position).to eq(x: 30, y: -10)
+      expect(s.current_map[:height]).to eq(11)
+      expect(s.current_map[:width]).to eq(33)
+    end
   end
 end
