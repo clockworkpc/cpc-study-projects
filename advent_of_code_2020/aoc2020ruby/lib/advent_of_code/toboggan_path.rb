@@ -1,16 +1,27 @@
 module AdventOfCode
   class TobogganPath
     attr_accessor :map, :position, :status_log
+
     def initialize(lines)
+      @original_map = lines
+
+      @map_dimensions = {
+        left: 0,
+        right: lines.first.length,
+        top: 0,
+        bottom: lines.count
+      }
+
       @map = lines
+
       @position = { x: 0, y: 0 }
       @status_log = [{ position: { x: 0, y: 0 }, status: :open }]
     end
 
     def current_map
       {
-        height: @map.count,
-        width: @map.first.length,
+        height: @map.bottom - @map.top,
+        width: @map.right - @map.left,
         map: @map
       }
     end
@@ -21,18 +32,43 @@ module AdventOfCode
       { x: x, y: y }
     end
 
-    def expand_map(map_ary:, direction:, int:)
-      additions = ->(line) { Array.new(int) { line }.join }
-      res = if direction == :right
-              map_ary.map { |line| line + additions[line] }
-            elsif direction == :left
-              map_ary.map { |line| additions[line] + line }
+    def expand_row(direction, row, i)
+      if direction == :right
+        row + @original_map[i]
+      elsif direction == :left
+        @original_map[i] + row
       end
-      res
+    end
+
+    def update_map_dimensions(**kwargs)
+      update_value = ->(k, v) { @map_dimensions[k] += v }
+      kwargs.each {|k,v| update_value.call(k, v)}
+      # update_value[:left, left]
+      # update_value[:right, right]
+      # update_value[:top, top]
+      # update_value[:bottom, bottom]
+    end
+
+    def expand_map(map_ary:, direction:, int:)
+      new_map = []
+      expand_row = lambda do |direction, row, i|
+      end
+
+      if direction == :right
+        map_ary.each_with_index { |row, i| new_map << row + @original_map[i] }
+
+        each_with_object
+        map_ary.map { |line| line + additions[line] }
+      elsif direction == :left
+        map_ary.map { |line| additions[line] + line }
+      end
+
+      new_map
     end
 
     def expand_current_map(direction:, int:)
       expanded_map = expand_map(map_ary: @map, direction: direction, int: int)
+      update_map_dimensions({ direction => } )
       @map = expanded_map
     end
 
@@ -52,6 +88,7 @@ module AdventOfCode
         int = expansion_factor((right || left).abs)
         expand_current_map(direction: direction, int: int) unless int <= 0
       end
+
       pp current_position
       pp current_map
       x = right || (left * -1)
@@ -87,6 +124,6 @@ module AdventOfCode
 
     def status_at_current_position
       status_at_location(x: current_position[:x], y: current_position[:y])
-     end
+    end
   end
 end
