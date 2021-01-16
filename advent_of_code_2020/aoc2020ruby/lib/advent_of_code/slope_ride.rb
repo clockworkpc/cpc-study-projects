@@ -18,12 +18,16 @@ module AdventOfCode
       end
     end
 
-    def add_cell_to_matrix(matrix, key, cell, x, y, position) # rubocop:disable Metrics/ParameterLists
+    # rubocop:disable Metrics/ParameterLists
+    # rubocop:disable Naming/MethodParameterName
+    def add_cell_to_matrix(matrix, key, cell, x, y, position)
       current_position = (x == position[:x] && y == position[:y])
       hsh = { x: x, y: y, value: cell }
       hsh[:marker] = marker(cell) if current_position
       matrix[key] << hsh
     end
+    # rubocop:enable Metrics/ParameterLists
+    # rubocop:enable Naming/MethodParameterName
 
     def generate_matrix_from_lines(lines:, position:)
       matrix = {}
@@ -38,30 +42,65 @@ module AdventOfCode
       matrix
     end
 
-    def expand_row_left(row, int)
-      expanded = []
-      (int + 1).times { expanded << row }
-      expanded.flatten!
-      hsh_with_marker = row.find { |hsh| hsh[:marker] }
-      index = expanded.index(hsh_with_marker)
-      require 'pry'; binding.pry
-      expanded[index].delete(:marker)
+    def initial_matrix
+      generate_matrix_from_lines(lines: @initial_lines,
+                                 position: @initial_position)
+    end
+
+    # def expand_row_left(row, initial_row)
+    #   expanded = row.map(&:dup)
+    #   new_x = row.first[:x] - 1
+
+    #     initial_row.map(&:dup).reverse.each do |hsh|
+    #       hsh[:x] = new_x
+    #       expanded.unshift(hsh)
+    #       new_x -= 1
+    #     end
+
+    #     expanded
+    # end
+
+    # def expand_row( direction:, row:, initial_row:, int:)
+    #   case direction
+    # end
+
+    def expand_row_left(row, initial_row, int) # rubocop:disable Metrics/MethodLength
+      expanded = row.map(&:dup)
+      new_x = row.first[:x] - 1
+
+      expand_left = lambda do
+        initial_row.map(&:dup).reverse.each do |hsh|
+          hsh[:x] = new_x
+          expanded.unshift(hsh)
+          new_x -= 1
+        end
+      end
+
+      int.times { expand_left.call }
       expanded
+    end
+
+    def expand_row(direction:, row:, int:)
+      initial_row = initial_matrix.values.find { |r| r == row }
+      marker_row = initial_row.find { |hsh| hsh[:marker] }
+      marker_row&.delete(:marker)
+
+      send("expand_row_#{direction}", row, initial_row, int)
     end
 
     def expand_matrix(matrix:, direction:, int:)
       new_matrix = {}
       matrix.each do |key, row|
         new_matrix[key] = []
-        new_row = send("expand_row_#{direction}", row, int)
+        new_row = send('expand_row', direction: direction, row: row, int: int)
         new_matrix[key] = new_row
       end
       new_matrix
     end
 
-    def call
-      matrix = generate_matrix_from_lines(lines: @initial_lines,
-                                          position: @initial_position)
-    end
+    # def call
+    #   matrix = generate_matrix_from_lines(lines: @initial_lines,
+    #                                       position: @initial_position)
+    # end
   end
 end

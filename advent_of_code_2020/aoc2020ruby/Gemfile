@@ -9,6 +9,8 @@ group :development do
   gem 'guard-rubocop'
   gem 'guard-shell'
   gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'rainbow'
   gem 'rb-fsevent', '~> 0.9'
   gem 'rubocop', require: false

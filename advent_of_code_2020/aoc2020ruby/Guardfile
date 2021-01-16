@@ -18,6 +18,14 @@ group :default do
   end
 end
 
+group :rescue do
+  guard :rspec, cmd: 'bundle exec rescue rspec --format documentation' do
+    require 'guard/rspec/dsl'
+    dsl = Guard::RSpec::Dsl.new(self)
+    watch_spec_and_lib_files(dsl)
+  end
+end
+
 group :tdd do
   guard :rspec, cmd: 'bundle exec rspec --format documentation --only-failures' do
     require 'guard/rspec/dsl'
