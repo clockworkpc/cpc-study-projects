@@ -1,21 +1,18 @@
 module AdventOfCode
   class SlopeRide
-    attr_reader :matrix
-
     def initialize(lines)
       @initial_lines = lines
       @initial_position = { x: 0, y: 0 }
+      @initial_log = { open: 1, trees: 0 }
     end
 
     def marker(cell)
-      case cell
-      when '.'
-        'O'
-      when '#'
-        'X'
-      else
-        cell
-      end
+      hsh = {
+        '.' => 'O',
+        '#' => 'X'
+      }
+
+      hsh.keys.include?(cell) ? hsh[cell] : cell
     end
 
     # rubocop:disable Metrics/ParameterLists
@@ -39,6 +36,7 @@ module AdventOfCode
           add_cell_to_matrix(matrix, key, cell, x, y, position)
         end
       end
+
       matrix
     end
 
@@ -47,22 +45,31 @@ module AdventOfCode
                                  position: @initial_position)
     end
 
-    # def expand_row_left(row, initial_row)
-    #   expanded = row.map(&:dup)
-    #   new_x = row.first[:x] - 1
+    def matrix
+      @matrix ||= initial_matrix
+    end
 
-    #     initial_row.map(&:dup).reverse.each do |hsh|
-    #       hsh[:x] = new_x
-    #       expanded.unshift(hsh)
-    #       new_x -= 1
-    #     end
+    def current_position
+      @position ||= @initial_position
+    end
 
-    #     expanded
-    # end
+    def cell_at_position(x:, y:)
+      row = matrix.values.find do |ary|
+        ary.find { |hsh| hsh[:x] == x && hsh[:y] == y }
+      end
 
-    # def expand_row( direction:, row:, initial_row:, int:)
-    #   case direction
-    # end
+      row.find { |hsh| hsh[:x] == x && hsh[:y] == y }
+    end
+
+    def cell_at_current_position
+      cell_at_position(current_position)
+    end
+
+    def draw_map(matrix)
+      matrix.values.map do |ary|
+        ary.map { |hsh| hsh[:marker] || hsh[:value] }.join
+      end.join("\n")
+    end
 
     def expand_row_left(row, initial_row, int) # rubocop:disable Metrics/MethodLength
       expanded = row.map(&:dup)
@@ -77,6 +84,22 @@ module AdventOfCode
       end
 
       int.times { expand_left.call }
+      expanded
+    end
+
+    def expand_row_right(row, initial_row, int) # rubocop:disable Metrics/MethodLength
+      expanded = row.map(&:dup)
+      new_x = row.last[:x] + 1
+
+      expand_right = lambda do
+        initial_row.map(&:dup).each do |hsh|
+          hsh[:x] = new_x
+          expanded << hsh
+          new_x += 1
+        end
+      end
+
+      int.times { expand_right.call }
       expanded
     end
 
@@ -97,6 +120,66 @@ module AdventOfCode
       end
       new_matrix
     end
+
+    def matrix_boundaries # rubocop:disable Metrics/AbcSize
+      min_value = ->(k) { matrix.values.map { |ary| ary.map { |hsh| hsh[k] } }.min.min }
+      max_value = ->(k) { matrix.values.map { |ary| ary.map { |hsh| hsh[k] } }.max.max }
+
+      {
+        min_x: min_value[:x],
+        max_x: max_value[:x],
+        min_y: min_value[:y],
+        may_y: max_value[:y]
+      }
+    end
+
+    def update_current_position(x:, y:) # rubocop:disable Metrics/AbcSize
+      current_position[:x] += x
+      current_position[:y] += y
+
+      exceeded_boundary = current_position[:x] > matrix_boundaries[:max_x] ||
+                          current_position[:x] < matrix_boundaries[:min_x] ||
+                          current_position[:y] > matrix_boundaries[:may_y] ||
+                          current_position[:y] < matrix_boundaries[:min_y]
+
+      if exceeded_boundary
+        # TODO: Work out how much to expand the map by
+        require 'pry'; binding.pry
+      end
+    end
+
+    def log
+      @log ||= @initial_log
+    end
+
+    def update_log(marker)
+      log[:open] += 1 if marker.eql?('O')
+      log[:trees] += 1 if marker.eql?('X')
+    end
+
+    def move(down:, right: nil, left: nil)
+      matrix
+      x = right || (left * -1)
+      update_current_position(x: x, y: down)
+      marker = marker(cell_at_current_position[:value])
+      cell_at_current_position[:marker] = marker
+      update_log(marker)
+    end
+
+    def travel(int:, down:, right: nil, left: nil)
+      int.times { move(down: down, right: right, left: left) }
+    end
+
+    def journey(down:, right: nil, left: nil)
+      int = matrix.count - 1
+      travel(int: int, down: down, right: right, left: left)
+    end
+
+    # def travel(right: nil, down: nil, left: nil)
+    #   (matrix.count - 1).times do
+    #     move(right: right, down: down, left: left)
+    #   end
+    # end
 
     # def call
     #   matrix = generate_matrix_from_lines(lines: @initial_lines,

@@ -89,8 +89,6 @@ module AdventOfCode
         expand_current_map(direction: direction, int: int) unless int <= 0
       end
 
-      pp current_position
-      pp current_map
       x = right || (left * -1)
       y = (down * -1) || up
       @position[:x] += x
