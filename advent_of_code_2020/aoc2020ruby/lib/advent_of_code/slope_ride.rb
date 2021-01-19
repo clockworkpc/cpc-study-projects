@@ -113,12 +113,19 @@ module AdventOfCode
 
     def expand_matrix(matrix:, direction:, int:)
       new_matrix = {}
+      require 'pry'; binding.pry
       matrix.each do |key, row|
         new_matrix[key] = []
         new_row = send('expand_row', direction: direction, row: row, int: int)
         new_matrix[key] = new_row
       end
       new_matrix
+    end
+
+    def expand_current_matrix(direction)
+      initial_width = @initial_lines.map(&:length).max
+      int = (current_position[:x].abs + 1) / initial_width
+      matrix = expand_matrix(matrix: matrix, direction: direction, int: int)
     end
 
     def matrix_boundaries # rubocop:disable Metrics/AbcSize
@@ -129,22 +136,18 @@ module AdventOfCode
         min_x: min_value[:x],
         max_x: max_value[:x],
         min_y: min_value[:y],
-        may_y: max_value[:y]
+        max_y: max_value[:y]
       }
     end
 
-    def update_current_position(x:, y:) # rubocop:disable Metrics/AbcSize
+    def update_current_position(x:, y:)
       current_position[:x] += x
       current_position[:y] += y
 
-      exceeded_boundary = current_position[:x] > matrix_boundaries[:max_x] ||
-                          current_position[:x] < matrix_boundaries[:min_x] ||
-                          current_position[:y] > matrix_boundaries[:may_y] ||
-                          current_position[:y] < matrix_boundaries[:min_y]
-
-      if exceeded_boundary
-        # TODO: Work out how much to expand the map by
-        require 'pry'; binding.pry
+      if current_position[:x] > matrix_boundaries[:max_x]
+        expand_current_matrix(:right)
+      elsif current_position[:x] < matrix_boundaries[:min_x]
+        expand_current_matrix(:left)
       end
     end
 

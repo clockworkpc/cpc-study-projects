@@ -226,8 +226,15 @@ RSpec.describe AdventOfCode::SlopeRide do
     it 'updates current position' do
       m = mini
       expect(m.current_position).to eq({ x: 0, y: 0 })
-      m.update_current_position(x: 1, y: -1)
-      expect(m.current_position).to eq({ x: 1, y: -1 })
+      m.update_current_position(x: 1, y: 1)
+      expect(m.current_position).to eq({ x: 1, y: 1 })
+    end
+
+    it 'updates current position and expands map' do
+      m = mini
+      expect(m.current_position).to eq({ x: 0, y: 0 })
+      m.update_current_position(x: 5, y: 1)
+      expect(m.current_position).to eq({ x: 5, y: 1 })
     end
 
     it 'returns cell at current position' do
