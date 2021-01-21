@@ -7,13 +7,31 @@ RSpec.describe AdventOfCode::SlopeRide do
 
   subject(:puzzle) { described_class.new(day_03_input) }
 
-  let(:day_03_input) { File.readlines('./spec/fixtures/day_03_input.txt') }
+  let(:day_03_input) { File.readlines('./spec/fixtures/input_day_03.txt') }
 
   let(:lines_3x3) do
     txt = <<~HEREDOC
       ..#
       .#.
       #..
+    HEREDOC
+
+    txt.split("\n")
+  end
+
+  let(:lines_sample) do
+    txt = <<~HEREDOC
+      ..##.......
+      #...#...#..
+      .#....#..#.
+      ..#.#...#.#
+      .#...##..#.
+      ..#.##.....
+      .#.#.#....#
+      .#........#
+      #.##...#...
+      #...##....#
+      .#..#...#.#
     HEREDOC
 
     txt.split("\n")
@@ -252,7 +270,9 @@ RSpec.describe AdventOfCode::SlopeRide do
         #..
       HEREDOC
       expect(m.draw_map(m.matrix)).to eq(new_map.strip)
-      expect(m.log).to eq({ open: 1, trees: 1 })
+      expect(m.log[:open]).to eq(1)
+      expect(m.log[:trees]).to eq(1)
+      expect(m.log[:total]).to eq(2)
     end
 
     it 'travels twice and updates the matrix and log' do
@@ -266,7 +286,7 @@ RSpec.describe AdventOfCode::SlopeRide do
       HEREDOC
 
       expect(m.draw_map(m.matrix)).to eq(new_map.strip)
-      expect(m.log).to eq({ open: 2, trees: 1 })
+      expect(m.log).to eq({ open: 2, trees: 1, total: 3 })
     end
 
     it 'travels to the bottom without expanding the map' do
@@ -287,7 +307,7 @@ RSpec.describe AdventOfCode::SlopeRide do
       }
 
       expect(m.draw_map(m.matrix)).to eq(new_map.strip)
-      expect(m.log).to eq({ open: 2, trees: 1 })
+      expect(m.log).to eq({ open: 2, trees: 1, total: 3 })
       expect(m.matrix_boundaries).to eq(boundaries)
     end
 
@@ -335,6 +355,28 @@ RSpec.describe AdventOfCode::SlopeRide do
                                            int: 1)
 
       expect(expanded_matrix).to eq(expanded_matrix_6x3_left)
+    end
+  end
+
+  context 'with sample input' do
+    it 'travels 10 times and encounters 7 trees' do
+      s = sample
+      s.travel(int: 10, right: 3, down: 1)
+      expect(s.log[:trees]).to eq(7)
+    end
+
+    it 'encounters 7 trees on its journey' do
+      s = sample
+      s.journey(right: 3, down: 1)
+      expect(s.log[:trees]).to eq(7)
+    end
+  end
+
+  context 'with puzzle input' do
+    it 'travels X times and encounters Y trees' do
+      s = puzzle
+      s.journey(right: 3, down: 1)
+      require 'pry'; binding.pry
     end
   end
 end

@@ -71,6 +71,10 @@ module AdventOfCode
       end.join("\n")
     end
 
+    def draw_current_map
+      draw_map(matrix)
+    end
+
     def expand_row_left(row, initial_row, int) # rubocop:disable Metrics/MethodLength
       expanded = row.map(&:dup)
       new_x = row.first[:x] - 1
@@ -99,12 +103,13 @@ module AdventOfCode
         end
       end
 
+      puts 'EXPANDING...'
       int.times { expand_right.call }
       expanded
     end
 
     def expand_row(direction:, row:, int:)
-      initial_row = initial_matrix.values.find { |r| r == row }
+      initial_row = initial_matrix.values.find { |r| r.first[:y] == row.first[:y] }
       marker_row = initial_row.find { |hsh| hsh[:marker] }
       marker_row&.delete(:marker)
 
@@ -113,10 +118,9 @@ module AdventOfCode
 
     def expand_matrix(matrix:, direction:, int:)
       new_matrix = {}
-      require 'pry'; binding.pry
       matrix.each do |key, row|
         new_matrix[key] = []
-        new_row = send('expand_row', direction: direction, row: row, int: int)
+        new_row = send('expand_row', { direction: direction, row: row, int: int })
         new_matrix[key] = new_row
       end
       new_matrix
@@ -125,7 +129,8 @@ module AdventOfCode
     def expand_current_matrix(direction)
       initial_width = @initial_lines.map(&:length).max
       int = (current_position[:x].abs + 1) / initial_width
-      matrix = expand_matrix(matrix: matrix, direction: direction, int: int)
+      puts "INT = #{int}"
+      @matrix = expand_matrix(matrix: matrix, direction: direction, int: int)
     end
 
     def matrix_boundaries # rubocop:disable Metrics/AbcSize
@@ -145,8 +150,10 @@ module AdventOfCode
       current_position[:y] += y
 
       if current_position[:x] > matrix_boundaries[:max_x]
+        puts 'EXPAND RIGHT'
         expand_current_matrix(:right)
       elsif current_position[:x] < matrix_boundaries[:min_x]
+        puts 'EXPAND LEFT'
         expand_current_matrix(:left)
       end
     end
@@ -158,6 +165,7 @@ module AdventOfCode
     def update_log(marker)
       log[:open] += 1 if marker.eql?('O')
       log[:trees] += 1 if marker.eql?('X')
+      log[:total] = log[:open] + log[:trees]
     end
 
     def move(down:, right: nil, left: nil)
@@ -165,8 +173,10 @@ module AdventOfCode
       x = right || (left * -1)
       update_current_position(x: x, y: down)
       marker = marker(cell_at_current_position[:value])
-      cell_at_current_position[:marker] = marker
+      cell = cell_at_current_position[:marker] = marker
       update_log(marker)
+      pp cell
+      pp log
     end
 
     def travel(int:, down:, right: nil, left: nil)
