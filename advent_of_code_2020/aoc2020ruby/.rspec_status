@@ -6,6 +6,7 @@ example_id                                                   | status | run_time
 ./spec/advent_of_code/expense_report_spec.rb[1:4]            | passed | 0.0001 seconds  |
 ./spec/advent_of_code/expense_report_spec.rb[1:5]            | passed | 0.00006 seconds |
 ./spec/advent_of_code/expense_report_spec.rb[1:6]            | passed | 0.90606 seconds |
+./spec/advent_of_code/passport_processing_spec.rb[1:1]       | passed | 0.0001 seconds  |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:1]          | passed | 0.00185 seconds |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:2]          | passed | 0.00044 seconds |
 ./spec/advent_of_code/sled_password_checker_spec.rb[1:1]     | passed | 0.0004 seconds  |
