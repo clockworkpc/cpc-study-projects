@@ -1,8 +1,0 @@
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/ParallelAssignment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
