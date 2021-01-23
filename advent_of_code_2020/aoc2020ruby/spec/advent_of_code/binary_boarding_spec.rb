@@ -68,8 +68,8 @@ RSpec.describe AdventOfCode::BinaryBoarding do
     expect(subject.highest_seat_id(sample_text)).to eq(820)
   end
 
-  it 'returns high seat ID for input' do
-    puts subject.highest_seat_id(puzzle_input)
+  it 'returns high seat ID of 998 for puzzle input' do
+    expect(subject.highest_seat_id(puzzle_input)).to eq(998)
   end
 
   describe 'median left tests' do
