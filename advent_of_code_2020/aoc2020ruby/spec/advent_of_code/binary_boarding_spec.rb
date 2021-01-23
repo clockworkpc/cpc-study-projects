@@ -22,54 +22,63 @@ RSpec.describe AdventOfCode::BinaryBoarding do
       { row: 70, column: 7, seat_id: 567 },
       { row: 14, column: 7, seat_id: 119 },
       { row: 102, column: 4, seat_id: 820 }
-    ]
+    ].sort_by { |t| [t[:row], t[:column]] }
   end
 
-  it 'returns row' do
-    expect(subject.row(sample_input)).to eq(44)
+  describe 'Part 2' do
+    it 'returns missing seats' do
+      pass = { row: 84, column: 4, seat_id: 676 }
+      expect(subject.missing_seat(puzzle_input)).to eq(pass)
+    end
   end
 
-  it 'returns seat' do
-    expect(subject.column(sample_input)).to eq(5)
-  end
+  describe 'Part 1' do
+    it 'returns row' do
+      expect(subject.row(sample_input)).to eq(44)
+    end
 
-  it 'returns ID' do
-    expect(subject.seat_id(sample_input)).to eq(357)
-  end
+    it 'returns seat' do
+      expect(subject.column(sample_input)).to eq(5)
+    end
 
-  it 'returns boarding pass' do
-    pass = { row: 44, column: 5, seat_id: 357 }
-    expect(subject.boarding_pass(sample_input)).to eq(pass)
-  end
+    it 'returns ID' do
+      expect(subject.seat_id(sample_input)).to eq(357)
+    end
 
-  it 'returns boarding pass' do
-    str = 'BFFFBBFRRR'
-    pass = { row: 70, column: 7, seat_id: 567 }
-    expect(subject.boarding_pass(str)).to eq(pass)
-  end
+    it 'returns boarding pass' do
+      pass = { row: 44, column: 5, seat_id: 357 }
+      expect(subject.boarding_pass(sample_input)).to eq(pass)
+    end
 
-  it 'returns boarding pass' do
-    str = 'FFFBBBFRRR'
-    pass = { row: 14, column: 7, seat_id: 119 }
-    expect(subject.boarding_pass(str)).to eq(pass)
-  end
+    it 'returns boarding pass' do
+      str = 'BFFFBBFRRR'
+      pass = { row: 70, column: 7, seat_id: 567 }
+      expect(subject.boarding_pass(str)).to eq(pass)
+    end
 
-  it 'returns boarding pass' do
-    str = 'BBFFBBFRLL'
-    pass = { row: 102, column: 4, seat_id: 820 }
-    expect(subject.boarding_pass(str)).to eq(pass)
-  end
+    it 'returns boarding pass' do
+      str = 'FFFBBBFRRR'
+      pass = { row: 14, column: 7, seat_id: 119 }
+      expect(subject.boarding_pass(str)).to eq(pass)
+    end
 
-  it 'returns boarding passes' do
-    expect(subject.boarding_passes(sample_text)).to eq(sample_boarding_passes)
-  end
+    it 'returns boarding pass' do
+      str = 'BBFFBBFRLL'
+      pass = { row: 102, column: 4, seat_id: 820 }
+      expect(subject.boarding_pass(str)).to eq(pass)
+    end
 
-  it 'returns highest seat ID' do
-    expect(subject.highest_seat_id(sample_text)).to eq(820)
-  end
+    it 'returns boarding passes' do
+      expect(subject.boarding_passes(sample_text)).to eq(sample_boarding_passes)
+    end
 
-  it 'returns high seat ID of 998 for puzzle input' do
-    expect(subject.highest_seat_id(puzzle_input)).to eq(998)
+    it 'returns highest seat ID' do
+      expect(subject.highest_seat_id(sample_text)).to eq(820)
+    end
+
+    it 'returns high seat ID of 998 for puzzle input' do
+      expect(subject.highest_seat_id(puzzle_input)).to eq(998)
+    end
   end
 
   describe 'median left tests' do

@@ -42,68 +42,60 @@ normal! zo
 normal! zo
 28
 normal! zo
-68
-normal! zo
-32
-normal! zo
-68
+35
 normal! zo
 36
 normal! zo
-68
-normal! zo
 40
 normal! zo
-68
+44
 normal! zo
-45
+48
 normal! zo
-68
+53
 normal! zo
-51
+59
 normal! zo
-68
-normal! zo
-57
-normal! zo
-68
-normal! zo
-63
-normal! zo
-69
+65
 normal! zo
 71
 normal! zo
-72
+75
 normal! zo
-77
+85
 normal! zo
-82
+84
 normal! zo
-87
+85
 normal! zo
-92
+90
 normal! zo
-97
+95
 normal! zo
-102
+100
 normal! zo
-107
+105
 normal! zo
-112
+110
 normal! zo
-117
+115
 normal! zo
-122
+120
 normal! zo
-127
+125
 normal! zo
-let s:l = 68 - ((43 * winheight(0) + 23) / 47)
+130
+normal! zo
+135
+normal! zo
+140
+normal! zo
+let s:l = 31 - ((16 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-68
-normal! 058|
+31
+normal! 060|
 wincmd w
 argglobal
 if bufexists("lib/advent_of_code/binary_boarding.rb") | buffer lib/advent_of_code/binary_boarding.rb | else | edit lib/advent_of_code/binary_boarding.rb | endif
@@ -115,13 +107,14 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 62 - ((35 * winheight(0) + 23) / 47)
+let s:l = 75 - ((20 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-62
-normal! 055|
+75
+normal! 07|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
 exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
 tabedit lib/advent_of_code/binary_boarding.rb

@@ -56,10 +56,27 @@ module AdventOfCode
     def boarding_passes(text)
       lines = text.split("\n")
       lines.map { |str| boarding_pass(str) }
+           .sort_by { |t| [t[:row], t[:column]] }
     end
 
     def highest_seat_id(text)
       boarding_passes(text).map { |bp| bp[:seat_id] }.max
+    end
+
+    def missing_seat(text)
+      bp = boarding_passes(text)
+      not_found = ->(n) { bp.find { |pass| pass[:seat_id] == n }.nil? }
+      ary = (bp.first[:seat_id]..bp.last[:seat_id]).to_a
+      missing_id = ary.find { |n| n if not_found[n] }
+
+      before = bp.find { |pass| pass[:seat_id] == missing_id - 1 }
+      after = bp.find { |pass| pass[:seat_id] == missing_id + 1 }
+
+      {
+        row: before[:row],
+        column: before[:column] + 1,
+        seat_id: before[:seat_id] + 1
+      }
     end
   end
 end
