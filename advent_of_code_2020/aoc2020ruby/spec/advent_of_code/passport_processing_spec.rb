@@ -59,8 +59,6 @@ RSpec.describe AdventOfCode::PassportProcessing do
   end
 
   describe 'Part 2' do
-
-
     it 'accepts a birth year between 1920 and 2002' do
       (1920..2002).to_a.each do |n|
         expect(subject.valid_birth_year?(n)).to eq(true)
@@ -130,7 +128,7 @@ RSpec.describe AdventOfCode::PassportProcessing do
     end
 
     it 'rejects a height entry without the suffix' do
-     expect(subject.valid_height?('155')).to eq(false) 
+      expect(subject.valid_height?('155')).to eq(false)
     end
 
     # hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
@@ -150,26 +148,86 @@ RSpec.describe AdventOfCode::PassportProcessing do
     it 'accepts a valid eye colour' do
       %w[amb blu brn gry grn hzl oth].each do |str|
         expect(subject.valid_eye_colour?(str)).to eq(true)
-      end 
+      end
     end
 
     it 'rejects an invalid eye colour' do
       %w[amber blue brown grey green hazel other ylw blk].each do |str|
-        puts str
         expect(subject.valid_eye_colour?(str)).to eq(false)
+      end
+
+      expect(subject.valid_eye_colour?('amb blue')).to eq(false)
+    end
+
+    it 'accepts a valid passport ID' do
+      expect(subject.valid_passport_id?('000111222')).to eq(true)
+      expect(subject.valid_passport_id?('123456789')).to eq(true)
+    end
+
+    it 'rejects an invalid passport ID' do
+      expect(subject.valid_passport_id?('00111222')).to eq(false)
+      expect(subject.valid_passport_id?('12345678')).to eq(false)
+      expect(subject.valid_passport_id?('0123456789')).to eq(false)
+    end
+
+    it 'accepts a valid passport' do
+      line = "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+      hcl:#623a2f"
+
+      passport = subject.passport(line)
+      expect(subject.valid_passport?(passport)).to eq(true)
+    end
+
+    it 'accepts valid passports' do
+      text = <<~'HEREDOC'
+        pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+        hcl:#623a2f
+        
+        eyr:2029 ecl:blu cid:129 byr:1989
+        iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm
+        
+        hcl:#888785
+        hgt:164cm byr:2001 iyr:2015 cid:88
+        pid:545766238 ecl:hzl
+        eyr:2022
+        
+        iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
+      HEREDOC
+
+      passports = subject.passports(text)
+      passports.each do |passport|
+        expect(subject.valid_passport?(passport)).to eq(true)
+      end
+
+      expect(subject.valid_passports_count(passports)).to eq(4)
+    end
+
+    it 'rejects invalid passports' do
+      text = <<~'HEREDOC'
+        eyr:1972 cid:100
+        hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
+        
+        iyr:2019
+        hcl:#602927 eyr:1967 hgt:170cm
+        ecl:grn pid:012533040 byr:1946
+        
+        hcl:dab227 iyr:2012
+        ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277
+        
+        hgt:59cm ecl:zzz
+        eyr:2038 hcl:74454a iyr:2023
+        pid:3556412378 byr:2007
+      HEREDOC
+
+      passports = subject.passports(text)
+      passports.each do |passport|
+        expect(subject.valid_passport?(passport)).to eq(false)
       end
     end
 
-    # ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-    # pid (Passport ID) - a nine-digit number, including leading zeroes.
-    # cid (Country ID) - ignored, missing or not.
-
-    # ecl valid:   brn
-    # ecl invalid: wat
-
-    # pid valid:   000000001
-    # pid invalid: 0123456789 
-
-
+    it 'counts valid passports from sample input' do
+      passports = subject.passports(puzzle_input)
+      expect(subject.valid_passports_count(passports)).to eq(198)
+    end
   end
 end

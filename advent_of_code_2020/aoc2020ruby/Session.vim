@@ -2,29 +2,23 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Development/cpc-study-projects/advent_of_code_2020/aoc2020ruby
+cd ~/Development/study/advent_of_code_2020/aoc2020ruby
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +133 spec/advent_of_code/passport_processing_spec.rb
+badd +1 spec/advent_of_code/passport_processing_spec.rb
 badd +1 lib/advent_of_code/passport_processing.rb
 argglobal
 %argdel
-edit spec/advent_of_code/passport_processing_spec.rb
+edit lib/advent_of_code/passport_processing.rb
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 set nosplitbelow
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 71 + 75) / 151)
-exe 'vert 2resize ' . ((&columns * 79 + 75) / 151)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -34,15 +28,21 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 158 - ((29 * winheight(0) + 19) / 39)
+let s:l = 100 - ((46 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-158
-normal! 016|
-wincmd w
+100
+normal! 03|
+tabedit spec/advent_of_code/passport_processing_spec.rb
+set splitbelow splitright
+set nosplitbelow
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
 argglobal
-if bufexists("lib/advent_of_code/passport_processing.rb") | buffer lib/advent_of_code/passport_processing.rb | else | edit lib/advent_of_code/passport_processing.rb | endif
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -51,16 +51,12 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 83 - ((34 * winheight(0) + 19) / 39)
+let s:l = 1 - ((0 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-83
-normal! 028|
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 71 + 75) / 151)
-exe 'vert 2resize ' . ((&columns * 79 + 75) / 151)
+1
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
