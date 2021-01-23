@@ -7,7 +7,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +26 spec/advent_of_code/passport_processing_spec.rb
+badd +133 spec/advent_of_code/passport_processing_spec.rb
 badd +1 lib/advent_of_code/passport_processing.rb
 argglobal
 %argdel
@@ -34,12 +34,12 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 53 - ((16 * winheight(0) + 19) / 39)
+let s:l = 158 - ((29 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-53
-normal! 03|
+158
+normal! 016|
 wincmd w
 argglobal
 if bufexists("lib/advent_of_code/passport_processing.rb") | buffer lib/advent_of_code/passport_processing.rb | else | edit lib/advent_of_code/passport_processing.rb | endif
@@ -51,13 +51,14 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 46 - ((34 * winheight(0) + 19) / 39)
+let s:l = 83 - ((34 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-46
-normal! 09|
+83
+normal! 028|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 71 + 75) / 151)
 exe 'vert 2resize ' . ((&columns * 79 + 75) / 151)
 tabnext 1

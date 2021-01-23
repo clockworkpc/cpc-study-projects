@@ -33,17 +33,54 @@ module AdventOfCode
       end
     end
 
-    def valid?(passport)
+    def valid_passport_keys?(passport)
       required_fields = DICTIONARY.values.reject {|n| n == :country_id}
       ( required_fields - passport.keys ).empty?
     end
 
-    def valid_passports(text)
+    def passports_with_valid_keys(text)
       res = passports(text).each_with_object([]) do |passport, ary|
-        ary << true if valid?(passport)
+        ary << true if valid_passport_keys?(passport)
       end
-
       res.count
+    end
+
+    def valid_birth_year?(int)
+      int >= 1920 && int <= 2002 
+    end
+
+    def valid_issue_year?(int)
+      int >= 2010 && int <= 2020 
+    end
+
+    def valid_expiration_year?(int)
+      int >= 2020 && int <= 2030 
+    end
+
+    def valid_metric_height?(int)
+      int >= 150 && int <= 193 
+    end
+
+    def valid_imperial_height?(int)
+      int >= 59 && int <= 76 
+    end
+
+    def valid_height?(str)
+      int = str.scan(/\d+/).first.to_i
+      system = 'metric' if str.match?(/\d+cm/)
+      system = 'imperial' if str.match?(/\d+in/)
+
+      return false if system.nil?
+
+      send("valid_#{system}_height?", int)
+    end
+
+    def valid_hair_colour?(str)
+      str.match?(/#[0-9abcdef]{6}/)
+    end
+
+    def valid_eye_colour?(str)
+      str.match?(/(amb|blu|brn|gry|grn|hzl|oth)/)
     end
   end
 end
