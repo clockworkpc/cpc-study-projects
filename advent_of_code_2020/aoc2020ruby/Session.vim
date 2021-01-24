@@ -8,10 +8,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 lib/advent_of_code/handy_haversacks.rb
-badd +0 spec/advent_of_code/handy_haversacks_spec.rb
+badd +1 spec/advent_of_code/handy_haversacks_spec.rb
 argglobal
 %argdel
-edit lib/advent_of_code/handy_haversacks.rb
+edit spec/advent_of_code/handy_haversacks_spec.rb
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -34,15 +34,15 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 66 - ((28 * winheight(0) + 23) / 47)
+let s:l = 61 - ((26 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-66
-normal! 0
+61
+normal! 058|
 wincmd w
 argglobal
-if bufexists("spec/advent_of_code/handy_haversacks_spec.rb") | buffer spec/advent_of_code/handy_haversacks_spec.rb | else | edit spec/advent_of_code/handy_haversacks_spec.rb | endif
+if bufexists("lib/advent_of_code/handy_haversacks.rb") | buffer lib/advent_of_code/handy_haversacks.rb | else | edit lib/advent_of_code/handy_haversacks.rb | endif
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -51,13 +51,14 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 59 - ((42 * winheight(0) + 23) / 47)
+let s:l = 72 - ((26 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-59
-normal! 0
+72
+normal! 09|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
 exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
 tabnext 1
