@@ -3,6 +3,7 @@ gemspec
 
 group :development do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'clipboard'
   gem 'did_you_mean'
   gem 'guard', require: false
   gem 'guard-rspec'
