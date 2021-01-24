@@ -53,11 +53,11 @@ RSpec.describe AdventOfCode::HandyHaversacks do
   end
 
   it 'returns 4 for valid_outermost_bags' do
-    res = subject.valid_outermost_bags(text: sample_input, bag: :shiny_gold)
+    res = subject.find_all_bags(text: sample_input, bag: :shiny_gold)
     expect(res).to eq(4)
   end
 
-  it 'returns X valid_outermost_bags for puzzle_input' do
-    puts subject.valid_outermost_bags(text: puzzle_input, bag: :shiny_gold)
-  end
+  # it 'returns X valid_outermost_bags for puzzle_input' do
+  #   puts subject.valid_outermost_bags(text: puzzle_input, bag: :shiny_gold)
+  # end
 end

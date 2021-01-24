@@ -45,25 +45,67 @@ module AdventOfCode
       end
     end
 
-    # TODO: Must be recursive, not just two passes
-    def valid_outermost_bags(text:, bag:)
-      find_bags = lambda do |outer_bag|
-        rules(text).map do |k, hsh|
-          puts "#{outer_bag} => #{hsh}" if hsh.key?(outer_bag)
-          # pp hsh if hsh.key?(outer_bag)
-          k if hsh.key?(outer_bag)
+    def find_bags(rules, bag, ary)
+      rules.each do |k, hsh|
+        ary << k if hsh.key?(bag)
+      end
+    end
+
+    def find_all_bags(text:, bag:, ary: [])
+      rules(text).each do |k, hsh|
+        next unless hsh.key?(bag)
+
+        ary << k
+      end
+
+      inner = ary.each_with_object([]) do |colour, ary2|
+        rules(text).each do |k, hsh|
+          next unless (ary2 & hsh.keys).empty?
+
+          ary2 << k if hsh.keys.include?(colour)
         end
       end
 
-      direct = find_bags.call(bag)
-                        .flatten.compact.uniq
+      require 'pry'; binding.pry
 
-      puts "\nDIRECT OUTER BAGS: #{direct}\n\n"
+      # indirect_bags = ->(ary) do
+      #   rules(text).each do |k, hsh|
+      #     next unless ary.include?()
 
-      indirect = direct.map { |b| find_bags.call(b) }
-                       .flatten.compact.uniq
+      #   end
+      # end
 
-      (direct + indirect).count
+      # ary.each
+
+      # ary = rules(text) if ary.empty?
+      # ary.each do |k, hsh|
+      #   next unless hsh.key?(bag)
+
+      #   ary << k
+      #   # hsh.keys.each do |new_bag|
+      #   #   find_all_bags(text: text, bag: new_bag, ary: ary)
+      #   # end
+      # end
+      # ary
     end
+
+    # TODO: Must be recursive, not just two passes
+    # def valid_outermost_bags(text:, bag:)
+    #   find_bags = lambda do |outer_bag|
+    #     rules(text).map do |k, hsh|
+    #       k if hsh.key?(outer_bag)
+    #     end
+    #   end
+
+    #   direct = find_bags.call(bag)
+    #                     .flatten.compact.uniq
+
+    #   puts "\nDIRECT OUTER BAGS: #{direct}\n\n"
+
+    #   indirect = direct.map { |b| find_bags.call(b) }
+    #                    .flatten.compact.uniq
+
+    #   (direct + indirect).count
+    # end
   end
 end

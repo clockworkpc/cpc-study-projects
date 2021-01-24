@@ -8,17 +8,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 lib/advent_of_code/handy_haversacks.rb
-badd +0 spec/fixtures/input_day_07.txt
+badd +0 spec/advent_of_code/handy_haversacks_spec.rb
 argglobal
 %argdel
 edit lib/advent_of_code/handy_haversacks.rb
 set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 set nosplitbelow
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -28,35 +34,32 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 49 - ((27 * winheight(0) + 23) / 47)
+let s:l = 66 - ((28 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-49
-normal! 07|
-tabedit spec/fixtures/input_day_07.txt
-set splitbelow splitright
-set nosplitbelow
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=20
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-let s:l = 594 - ((46 * winheight(0) + 23) / 47)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-594
+66
 normal! 0
+wincmd w
+argglobal
+if bufexists("spec/advent_of_code/handy_haversacks_spec.rb") | buffer spec/advent_of_code/handy_haversacks_spec.rb | else | edit spec/advent_of_code/handy_haversacks_spec.rb | endif
+setlocal fdm=syntax
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=20
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+let s:l = 59 - ((42 * winheight(0) + 23) / 47)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+59
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
