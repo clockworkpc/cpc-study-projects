@@ -1,3 +1,4 @@
+require 'tty-box'
 module AdventOfCode
   class HandyHaversacks
     def symbolize_colour(string)
@@ -45,7 +46,7 @@ module AdventOfCode
       end
     end
 
-    def find_bags(text, colour, ary)
+    def find_outer_bags(text, colour, ary)
       rules(text).each do |k, hsh|
         next unless hsh.key?(colour)
 
@@ -53,18 +54,47 @@ module AdventOfCode
 
         ary << k
       end
+
       ary
     end
 
-    def deep_find_bags(text:, colour:, ary: [])
+    def deep_find_outer_bags(text:, colour:, ary: [])
       running = true
       while running
-        find_bags(text, colour, ary)
+        find_outer_bags(text, colour, ary)
         current_colours = ary.dup
-        ary.each { |c2| find_bags(text, c2, ary) }
+        ary.each { |c2| find_outer_bags(text, c2, ary) }
         running = false if ary == current_colours
       end
       ary.count
+    end
+
+    def find_inner_bags(rules, colour, ary)
+      rules.each do |k, hsh|
+        next unless k == colour
+
+        next if ary.include?(hsh)
+
+        ary << hsh
+      end
+    end
+
+    def deep_find_inner_bags(colour:, rules: nil, text: nil, ary: [])
+      rules = rules(text) if rules.nil?
+
+      running = true
+      while running
+        find_inner_bags(rules, colour, ary)
+        current_hashes = ary.dup
+        ary.each do |hsh|
+          hsh.keys.each do |k|
+            find_inner_bags(rules, k, ary)
+          end
+        end
+        pp ary
+        running = false
+      end
+      ary.map(&:values).flatten.sum
     end
   end
 end

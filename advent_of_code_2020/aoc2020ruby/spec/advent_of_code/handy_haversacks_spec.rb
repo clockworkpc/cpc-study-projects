@@ -59,6 +59,11 @@ RSpec.describe AdventOfCode::HandyHaversacks do
       
       How many individual bags are required inside your single shiny gold bag?
     HEREDOC
+
+    it 'finds 32 bags for :shiny_gold from sample input' do
+      res = subject.deep_find_inner_bags(rules: sample_hash, colour: :shiny_gold)
+      expect(res).to eq(32)
+    end
   end
 
   describe 'Part 1' do
@@ -84,12 +89,13 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     end
 
     it 'returns 4 for valid_outermost_bags' do
-      res = subject.deep_find_bags(text: sample_input, colour: :shiny_gold)
+      res = subject.deep_find_outer_bags(text: sample_input, colour: :shiny_gold)
       expect(res).to eq(4)
     end
 
-    it 'returns X valid_outermost_bags for puzzle_input' do
-      puts subject.deep_find_bags(text: puzzle_input, colour: :shiny_gold)
-    end
+    # it 'returns 185 valid_outermost_bags for puzzle_input' do
+    #   res = subject.deep_find_outer_bags(text: puzzle_input, colour: :shiny_gold)
+    #   expect(res).to eq(185)
+    # end
   end
 end
