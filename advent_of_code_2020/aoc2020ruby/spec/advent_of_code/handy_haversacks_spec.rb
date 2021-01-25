@@ -31,38 +31,53 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     }
   end
 
+  let(:sample_hash2) do
+    {
+      shiny_gold: { dark_red: 2 },
+      dark_red: { dark_orange: 2 },
+      dark_orange: { dark_yellow: 2 },
+      dark_yellow: { dark_green: 2 },
+      dark_green: { dark_blue: 2 },
+      dark_blue: { dark_violet: 2 },
+      dark_violet: {}
+    }
+  end
+
+  let(:rules_nested_ary) do
+    [
+      { dark_red: 2 }, [
+        { dark_orange: 2 }, [
+          { dark_yellow: 2 }, [
+            { dark_green: 2 }, [
+              { dark_blue: 2 }, [
+                { dark_violet: 2 }
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  end
+
   describe 'Part 2' do
     <<~'HEREDOC'
-      --- Part Two ---
-      It's getting pretty expensive to fly these days - not because of ticket prices, but because of the ridiculous number of bags you need to buy!
-      
-      Consider again your shiny gold bag and the rules from the above example:
-      
-      faded blue bags contain 0 other bags.
-      dotted black bags contain 0 other bags.
-      vibrant plum bags contain 11 other bags: 5 faded blue bags and 6 dotted black bags.
-      dark olive bags contain 7 other bags: 3 faded blue bags and 4 dotted black bags.
-      So, a single shiny gold bag must contain 1 dark olive bag (and the 7 bags within it) plus 2 vibrant plum bags (and the 11 bags within each of those): 1 + 1*7 + 2 + 2*11 = 32 bags!
-      
-      Of course, the actual rules have a small chance of going several levels deeper than this example; be sure to count all of the bags, even if the nesting becomes topologically impractical!
-      
+
       Here's another example:
-      
-      shiny gold bags contain 2 dark red bags.
-      dark red bags contain 2 dark orange bags.
-      dark orange bags contain 2 dark yellow bags.
-      dark yellow bags contain 2 dark green bags.
-      dark green bags contain 2 dark blue bags.
-      dark blue bags contain 2 dark violet bags.
-      dark violet bags contain no other bags.
+
       In this example, a single shiny gold bag must contain 126 other bags.
-      
+
       How many individual bags are required inside your single shiny gold bag?
     HEREDOC
 
     it 'finds 32 bags for :shiny_gold from sample input' do
+      # require 'pry'; binding.pry
       res = subject.deep_find_inner_bags(rules: sample_hash, colour: :shiny_gold)
       expect(res).to eq(32)
+    end
+
+    it 'finds 126 bags for :shiny_gold from sample_hash2' do
+      res = subject.deep_find_inner_bags(rules: sample_hash2, colour: :shiny_gold)
+      expect(res).to eq(126)
     end
   end
 
@@ -93,9 +108,9 @@ RSpec.describe AdventOfCode::HandyHaversacks do
       expect(res).to eq(4)
     end
 
-    # it 'returns 185 valid_outermost_bags for puzzle_input' do
-    #   res = subject.deep_find_outer_bags(text: puzzle_input, colour: :shiny_gold)
-    #   expect(res).to eq(185)
-    # end
+    it 'returns 185 valid_outermost_bags for puzzle_input' do
+      res = subject.deep_find_outer_bags(text: puzzle_input, colour: :shiny_gold)
+      expect(res).to eq(185)
+    end
   end
 end

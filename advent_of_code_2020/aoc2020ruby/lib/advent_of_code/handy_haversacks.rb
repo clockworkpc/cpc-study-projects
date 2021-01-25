@@ -46,55 +46,62 @@ module AdventOfCode
       end
     end
 
-    def find_outer_bags(text, colour, ary)
-      rules(text).each do |k, hsh|
+    def find_outer_bags(rules, colour, ary)
+      rules.each do |k, hsh|
         next unless hsh.key?(colour)
 
         next if ary.include?(k)
 
         ary << k
+        rules.delete(k)
       end
 
       ary
     end
 
-    def deep_find_outer_bags(text:, colour:, ary: [])
+    def deep_find_outer_bags(colour:, rules: nil, text: nil, ary: [])
+      rules = rules(text) if rules.nil?
+
       running = true
       while running
-        find_outer_bags(text, colour, ary)
+        find_outer_bags(rules, colour, ary)
         current_colours = ary.dup
-        ary.each { |c2| find_outer_bags(text, c2, ary) }
+        ary.each { |c2| find_outer_bags(rules, c2, ary) }
         running = false if ary == current_colours
       end
       ary.count
     end
 
-    def find_inner_bags(rules, colour, ary)
+    def find_inner_bags(rules, colour, ary, int = 1)
       rules.each do |k, hsh|
         next unless k == colour
 
         next if ary.include?(hsh)
 
         ary << hsh
+        rules.delete(k)
       end
+      ary
     end
 
     def deep_find_inner_bags(colour:, rules: nil, text: nil, ary: [])
-      rules = rules(text) if rules.nil?
-
       running = true
       while running
         find_inner_bags(rules, colour, ary)
         current_hashes = ary.dup
-        ary.each do |hsh|
-          hsh.keys.each do |k|
-            find_inner_bags(rules, k, ary)
-          end
-        end
-        pp ary
-        running = false
+
+        ary.each { |hsh| hsh.each { |k, v| find_inner_bags(rules, k, ary, v) } }
+
+        running = false if ary == current_hashes
       end
-      ary.map(&:values).flatten.sum
+
+      require 'pry'; binding.pry
+
+      nested_values = ary.map(&:values).flatten.each_with_object([]) do |n, ar2|
+        ar2 << (ar2.empty? ? n : n * ar2.last)
+      end
+
+      nested_values.inject(&:+)
     end
   end
 end
