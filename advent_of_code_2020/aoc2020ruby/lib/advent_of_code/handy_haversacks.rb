@@ -97,11 +97,14 @@ module AdventOfCode
 
       require 'pry'; binding.pry
 
-      nested_values = ary.map(&:values).flatten.each_with_object([]) do |n, ar2|
-        ar2 << (ar2.empty? ? n : n * ar2.last)
-      end
+      # Example [[2], [2, 4], [2, 4, 8]] => [2, 8, 64] => 74
+      ary.map {|n| n.inject(&:*)}.inject(&:+)
 
-      nested_values.inject(&:+)
+      # nested_values = ary.map(&:values).flatten.each_with_object([]) do |n, ar2|
+      #   ar2 << (ar2.empty? ? n : n * ar2.last)
+      # end
+
+      # nested_values.inject(&:+)
     end
   end
 end
