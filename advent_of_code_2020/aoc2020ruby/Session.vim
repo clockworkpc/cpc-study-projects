@@ -34,12 +34,12 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 103 - ((33 * winheight(0) + 23) / 47)
+let s:l = 76 - ((35 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-103
-normal! 0
+76
+normal! 040|
 wincmd w
 argglobal
 if bufexists("lib/advent_of_code/handy_haversacks.rb") | buffer lib/advent_of_code/handy_haversacks.rb | else | edit lib/advent_of_code/handy_haversacks.rb | endif
@@ -51,11 +51,11 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 139 - ((29 * winheight(0) + 23) / 47)
+let s:l = 96 - ((43 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-139
+96
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)

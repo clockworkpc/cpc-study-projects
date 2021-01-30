@@ -43,29 +43,21 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     }
   end
 
-  let(:sample_hash2) do
-    {
-      shiny_gold: { dark_red: 2 },
-      dark_red: { dark_orange: 2 },
-      dark_orange: { dark_yellow: 2 },
-      dark_yellow: { dark_green: 2 },
-      dark_green: { dark_blue: 2 },
-      dark_blue: { dark_violet: 2 },
-      dark_violet: {}
-    }
-  end
-
   describe 'Part 2' do
+    it 'converts text input into a Hash where each key has an array of Hashes' do
+      expect(subject.new_rules(sample_input)).to eq(new_hash)
+    end
+
     it 'finds 32 bags for :shiny_gold from sample input' do
       res1 = subject.deep_find_inner_bags(text: sample_input, colour: :shiny_gold)
       array = [[1, 1], [1, 1, 3], [1, 1, 4], [1, 2], [1, 2, 5], [1, 2, 6]]
       expect(res1).to eq(array)
-      res2 = subject.inner_bags_sum_total(text: sample_input, colour: :shiny_gold)
+      res2 = subject.deep_find_inner_bags_sum_total(text: sample_input, colour: :shiny_gold)
       expect(res2).to eq(32)
     end
 
     it 'finds 126 bags for :shiny_gold from sample_hash2' do
-      res = subject.inner_bags_sum_total(
+      res = subject.deep_find_inner_bags_sum_total(
         text: sample_input2,
         colour: :shiny_gold
       )
@@ -73,7 +65,7 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     end
 
     it 'finds X for puzzle_input' do
-      res = subject.inner_bags_sum_total(
+      res = subject.deep_find_inner_bags_sum_total(
         text: puzzle_input,
         colour: :shiny_gold
       )
