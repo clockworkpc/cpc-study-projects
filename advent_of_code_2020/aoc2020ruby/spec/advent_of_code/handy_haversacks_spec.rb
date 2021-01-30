@@ -17,6 +17,32 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     HEREDOC
   end
 
+  let(:sample_input2) do
+    <<~HEREDOC
+      shiny gold bags contain 2 dark red bags.
+      dark red bags contain 2 dark orange bags.
+      dark orange bags contain 2 dark yellow bags.
+      dark yellow bags contain 2 dark green bags.
+      dark green bags contain 2 dark blue bags.
+      dark blue bags contain 2 dark violet bags.
+      dark violet bags contain no other bags.
+    HEREDOC
+  end
+
+  let(:new_hash) do
+    {
+      light_red: [{ bright_white: 1 }, { muted_yellow: 2 }],
+      dark_orange: [{ bright_white: 3 }, { muted_yellow: 4 }],
+      bright_white: [{ shiny_gold: 1 }],
+      muted_yellow: [{ shiny_gold: 2 }, { faded_blue: 9 }],
+      shiny_gold: [{ dark_olive: 1 }, { vibrant_plum: 2 }],
+      dark_olive: [{ faded_blue: 3 }, { dotted_black: 4 }],
+      vibrant_plum: [{ faded_blue: 5 }, { dotted_black: 6 }],
+      faded_blue: [],
+      dotted_black: []
+    }
+  end
+
   let(:sample_hash) do
     {
       light_red: { bright_white: 1, muted_yellow: 2 },
@@ -43,22 +69,6 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     }
   end
 
-  let(:rules_nested_ary) do
-    [
-      { dark_red: 2 }, [
-        { dark_orange: 2 }, [
-          { dark_yellow: 2 }, [
-            { dark_green: 2 }, [
-              { dark_blue: 2 }, [
-                { dark_violet: 2 }
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  end
-
   describe 'Part 2' do
     <<~'HEREDOC'
 
@@ -69,15 +79,33 @@ RSpec.describe AdventOfCode::HandyHaversacks do
       How many individual bags are required inside your single shiny gold bag?
     HEREDOC
 
-    it 'finds 32 bags for :shiny_gold from sample input' do
-      # require 'pry'; binding.pry
-      res = subject.deep_find_inner_bags(rules: sample_hash, colour: :shiny_gold)
-      expect(res).to eq(32)
+    it 'converts text input into a Hash where each key has an array of Hashes' do
+      expect(subject.new_rules(sample_input)).to eq(new_hash)
     end
 
-    it 'finds 126 bags for :shiny_gold from sample_hash2' do
-      res = subject.deep_find_inner_bags(rules: sample_hash2, colour: :shiny_gold)
-      expect(res).to eq(126)
+    it 'finds 32 bags for :shiny_gold from sample input' do
+      # require 'pry'; binding.pry
+      res1 = subject.deep_find_inner_bags(text: sample_input, colour: :shiny_gold)
+      expect(res1).to eq([[1, 1], [1, 3], [1, 4], [1, 2], [2, 5], [2, 6]])
+      res2 = subject.deep_find_inner_bags_total(text: sample_input, colour: :shiny_gold)
+      expect(res2).to eq(32)
+    end
+
+    # it 'finds 126 bags for :shiny_gold from sample_hash2' do
+    #   res = subject.deep_find_inner_bags_total(
+    #     text: sample_input2,
+    #     colour: :shiny_gold
+    #   )
+    #   expect(res).to eq(126)
+    # end
+
+    it 'parses the rule' do
+      rule = 'shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.'
+      subject = described_class.new
+      subject.parse_rule(rule)
+      require 'pry'; binding.pry
+      puts subject::PARENTS
+      # expect(subject.parse_rule(rule)).to eq(:hello)
     end
   end
 
