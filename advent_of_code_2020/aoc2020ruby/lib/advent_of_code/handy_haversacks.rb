@@ -73,16 +73,6 @@ module AdventOfCode
       ary.count
     end
 
-    # def new_rule(line)
-    #   bag_hsh = {}
-    #   sentence = line.split('bags contain')
-    #   outer_bag_key = symbolize_colour(sentence.first)
-    #   inner_bag_str_ary = inner_bags_predicate(sentence)
-    #   bag_hsh[outer_bag_key] = inner_bags_hash(inner_bag_str_ary)
-    #                            .map { |k, v| { k => v } }
-    #   bag_hsh
-    # end
-
     def find_inner_bags(rules:, colour:, total:, current:)
       rules[colour].each do |k, v|
         ary = current.dup
@@ -98,10 +88,7 @@ module AdventOfCode
     end
 
     def deep_find_inner_bags(text:, colour:)
-      find_inner_bags(rules: rules(text),
-                      colour: colour,
-                      total: [],
-                      current: [1])
+      find_inner_bags(rules: rules(text), colour: colour, total: [], current: [1])
     end
 
     def inner_bags_sum_total(text:, colour:)
