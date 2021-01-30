@@ -86,26 +86,27 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     it 'finds 32 bags for :shiny_gold from sample input' do
       # require 'pry'; binding.pry
       res1 = subject.deep_find_inner_bags(text: sample_input, colour: :shiny_gold)
-      expect(res1).to eq([[1, 1], [1, 3], [1, 4], [1, 2], [2, 5], [2, 6]])
-      res2 = subject.deep_find_inner_bags_total(text: sample_input, colour: :shiny_gold)
+      array = [[1, 1], [1, 1, 3], [1, 1, 4], [1, 2], [1, 2, 5], [1, 2, 6]]
+      expect(res1).to eq(array)
+      res2 = subject.deep_find_inner_bags_sum_total(text: sample_input, colour: :shiny_gold)
       expect(res2).to eq(32)
     end
 
-    # it 'finds 126 bags for :shiny_gold from sample_hash2' do
-    #   res = subject.deep_find_inner_bags_total(
-    #     text: sample_input2,
-    #     colour: :shiny_gold
-    #   )
-    #   expect(res).to eq(126)
-    # end
+    it 'finds 126 bags for :shiny_gold from sample_hash2' do
+      res = subject.deep_find_inner_bags_sum_total(
+        text: sample_input2,
+        colour: :shiny_gold
+      )
+      expect(res).to eq(126)
+    end
 
-    it 'parses the rule' do
-      rule = 'shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.'
-      subject = described_class.new
-      subject.parse_rule(rule)
-      require 'pry'; binding.pry
-      puts subject::PARENTS
-      # expect(subject.parse_rule(rule)).to eq(:hello)
+    it 'finds X for puzzle_input' do
+      res = subject.deep_find_inner_bags_sum_total(
+        text: puzzle_input,
+        colour: :shiny_gold
+      )
+
+      expect(res).to eq(89_084)
     end
   end
 

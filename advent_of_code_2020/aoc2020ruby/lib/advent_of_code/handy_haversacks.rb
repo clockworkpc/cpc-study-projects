@@ -2,19 +2,6 @@ require 'tty-box'
 require 'set'
 module AdventOfCode
   class HandyHaversacks
-    PARENTS = Hash.new { |k, v| k[v] = [] }
-    CONTENTS = Hash.new { |k, v| k[v] = [] }
-
-    def parse_rule(rule)
-      parent = rule.scan(/\w+ \w+/).first
-
-      rule.scan(/(\d+) (\w+ \w+)/).each do |quantity, child|
-        PARENTS[child].push(parent)
-        CONTENTS[parent].push(quantity.to_i)
-      end
-      require 'pry'; binding.pry
-    end
-
     def symbolize_colour(string)
       string.strip.sub(/\s/, '_').to_sym
     end
@@ -130,45 +117,36 @@ module AdventOfCode
     #   end
     # end
 
-    def find_inner_bags(rules:, colour:, array:, int: 1)
-      return if rules[colour].empty? || rules[colour].nil?
+    def find_inner_bags(rules:, colour:, total:, current:)
+      # return if rules[colour].empty? || rules[colour].nil?
 
-      rules[colour].each do |kolour, value|
-        array << [int, value]
-        pp kolour
-        pp array
+      rules[colour].each do |k, v|
+        ary = current.dup
+        ary << v
+        total << ary
+        pp total
 
-        find_inner_bags(rules: rules,
-                        colour: kolour,
-                        array: array,
-                        int: value)
+        next if rules[k].nil? || rules[k].empty?
+
+        find_inner_bags(colour: k,
+                        rules: rules,
+                        total: total,
+                        current: ary)
       end
 
-      array
+      total
     end
 
-    def deep_find_inner_bags(text:, colour:, array: [])
+    def deep_find_inner_bags(text:, colour:)
       find_inner_bags(rules: rules(text),
                       colour: colour,
-                      array: array)
+                      total: [],
+                      current: [1])
     end
 
-    def deep_find_inner_bags_total(text:, colour:)
-      res = deep_find_inner_bags(text: text,
-                                 colour: colour)
-
-      res.sum { |ary| ary.inject(&:*) }
+    def deep_find_inner_bags_sum_total(text:, colour:)
+      deep_find_inner_bags(text: text, colour: colour)
+        .sum { |ary| ary.inject(&:*) }
     end
-
-    # def deep_find_inner_bags(colour:, rules: nil, text: nil, ary: [])
-    #   # # Example [[2], [2, 4], [2, 4, 8]] => [2, 8, 64] => 74
-    #   # ary.map { |n| n.inject(&:*) }.inject(&:+)
-
-    #   # nested_values = ary.map(&:values).flatten.each_with_object([]) do |n, ar2|
-    #   #   ar2 << (ar2.empty? ? n : n * ar2.last)
-    #   # end
-
-    #   # nested_values.inject(&:+)
-    # end
   end
 end

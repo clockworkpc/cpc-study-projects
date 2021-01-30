@@ -7,16 +7,15 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 spec/advent_of_code/handy_haversacks_spec.rb
-badd +1 spec/advent_of_code/handy_haversacks_alt_spec.rb
-badd +1 ~/Development/study/advent_of_code_2020/aoc2020ruby/lib/advent_of_code/handy_haversacks_alt.rb
+badd +12 spec/advent_of_code/handy_haversacks_spec.rb
+badd +0 lib/advent_of_code/handy_haversacks.rb
 argglobal
 %argdel
 edit spec/advent_of_code/handy_haversacks_spec.rb
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+1wincmd h
 wincmd w
 set nosplitbelow
 wincmd t
@@ -24,8 +23,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 23 + 25) / 50)
-exe '2resize ' . ((&lines * 23 + 25) / 50)
+exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -35,41 +34,15 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 12 - ((11 * winheight(0) + 11) / 23)
+let s:l = 103 - ((33 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 07|
-wincmd w
-argglobal
-if bufexists("spec/advent_of_code/handy_haversacks_alt_spec.rb") | buffer spec/advent_of_code/handy_haversacks_alt_spec.rb | else | edit spec/advent_of_code/handy_haversacks_alt_spec.rb | endif
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=20
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-let s:l = 15 - ((14 * winheight(0) + 11) / 23)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-15
+103
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 23 + 25) / 50)
-exe '2resize ' . ((&lines * 23 + 25) / 50)
-tabedit ~/Development/study/advent_of_code_2020/aoc2020ruby/lib/advent_of_code/handy_haversacks_alt.rb
-set splitbelow splitright
-set nosplitbelow
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
+if bufexists("lib/advent_of_code/handy_haversacks.rb") | buffer lib/advent_of_code/handy_haversacks.rb | else | edit lib/advent_of_code/handy_haversacks.rb | endif
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -78,13 +51,16 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 16 - ((15 * winheight(0) + 23) / 47)
+let s:l = 139 - ((29 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-normal! 028|
-tabnext 2
+139
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 95 + 95) / 191)
+tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
