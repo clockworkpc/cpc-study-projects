@@ -2,41 +2,25 @@ require 'tty-box'
 require 'set'
 module AdventOfCode
   class HandyHaversacks
+    LINE_REGEX = /(\w+\s\w+ bag|\d+ \w+\s\w+ bag)/.freeze
     def symbolize_colour(string)
       string.strip.sub(/\s/, '_').to_sym
     end
 
-    def inner_bags_predicate(sentence)
-      sentence.last.sub('.', '')
-              .sub('bags', '')
-              .sub('bag', '')
-              .split(',').map(&:strip)
-    end
+    def rule(line)
+      bags = line.scan(LINE_REGEX).flatten
+                 .map { |str| str.delete_suffix('bag').strip }
 
-    def inner_bag_key_value(inner_bag_str)
-      key_str = inner_bag_str.scan(/[a-z]+\s[a-z]+/).first
-      key = symbolize_colour(key_str)
-      value = inner_bag_str.scan(/\d+/).first.to_i
+      parent = bags[0].sub(' ', '_').to_sym
 
-      [key, value]
-    end
+      return { parent => {} } if line.match?('no other')
 
-    def inner_bags_hash(inner_bag_str_ary)
-      inner_bag_str_ary.each_with_object({}) do |inner_bag_str, hsh|
-        next if inner_bag_str.match?('no other')
-
-        key, value = inner_bag_key_value(inner_bag_str)
+      children = bags[1..-1].each_with_object({}) do |str, hsh|
+        key = str.scan(/[a-z]+ [a-z]+/).first.sub(' ', '_').to_sym
+        value = str.scan(/\d+/).first.to_i
         hsh[key] = value
       end
-    end
-
-    def rule(line)
-      bag_hsh = {}
-      sentence = line.split('bags contain')
-      outer_bag_key = symbolize_colour(sentence.first)
-      inner_bag_str_ary = inner_bags_predicate(sentence)
-      bag_hsh[outer_bag_key] = inner_bags_hash(inner_bag_str_ary)
-      bag_hsh
+      { parent => children }
     end
 
     def rules(text)
@@ -75,8 +59,7 @@ module AdventOfCode
 
     def find_inner_bags(rules:, colour:, total:, current:)
       rules[colour].each do |k, v|
-        ary = current.dup
-        ary << v
+        ary = (current.dup << v)
         total << ary
 
         next if rules[k].nil? || rules[k].empty?

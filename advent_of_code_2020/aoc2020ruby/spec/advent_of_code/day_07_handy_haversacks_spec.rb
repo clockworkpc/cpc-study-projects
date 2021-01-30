@@ -72,7 +72,7 @@ RSpec.describe AdventOfCode::HandyHaversacks do
       expect(res).to eq(126)
     end
 
-    it 'finds X for puzzle_input' do
+    it 'inner bag sum total for puzzle_input returns 89_084' do
       res = subject.inner_bags_sum_total(
         text: puzzle_input,
         colour: :shiny_gold
@@ -101,7 +101,8 @@ RSpec.describe AdventOfCode::HandyHaversacks do
     end
 
     it 'generates a dictionary of bag rules' do
-      expect(subject.rules(sample_input)).to eq(sample_hash)
+      res = subject.rules(sample_input)
+      expect(res).to eq(sample_hash)
     end
 
     it 'returns 4 for valid_outermost_bags' do
