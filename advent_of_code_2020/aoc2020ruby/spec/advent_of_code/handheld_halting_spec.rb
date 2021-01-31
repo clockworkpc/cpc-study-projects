@@ -19,23 +19,37 @@ RSpec.describe AdventOfCode::HandheldHalting do
 
   let(:sample_instructions) do
     [
-      cmd0: { nop: 0 },
-      cmd1: { acc: 1 },
-      cmd2: { jmp: 4 },
-      cmd3: { acc: 3 },
-      cmd4: { jmp: -3 },
-      cmd5: { acc: -99 },
-      cmd6: { acc: 1 },
-      cmd7: { jmp: -4 },
-      cmd8: { acc: 6 }
+      { index: 0, cmd: :nop, value: 0 },
+      { index: 1, cmd: :acc, value: +1 },
+      { index: 2, cmd: :jmp, value: +4 },
+      { index: 3, cmd: :acc, value: +3 },
+      { index: 4, cmd: :jmp, value: -3 },
+      { index: 5, cmd: :acc, value: -99 },
+      { index: 6, cmd: :acc, value: +1 },
+      { index: 7, cmd: :jmp, value: -4 },
+      { index: 8, cmd: :acc, value: +6 }
     ]
   end
 
-  it 'converts texts into Array of Hashes' do
-    expect(subject.instructions(sample_input)).to eq(sample_instructions)
+  describe 'Part 2' do
   end
 
-  it 'returns accumulator = 5 for sample input' do
-    expect(subject.execute_instructions(sample_input)).to eq(5)
+  describe 'Part 1' do
+    it 'converts texts into Array of Hashes' do
+      expect(subject.instructions(sample_input)).to eq(sample_instructions)
+    end
+
+    # it 'returns [1,1,3] for sample input' do
+    #   expect(subject.execute_instructions(sample_input)).to eq([1, 1, 3])
+    # end
+
+    it 'returns a sum of 5 for sample input' do
+      expect(subject.accumulator_sum(sample_input)).to eq(5)
+    end
+
+    # it 'returns 1_941 for puzzle_input' do
+    #   res = subject.accumulator_sum(puzzle_input)
+    #   expect(res).to eq(1_941)
+    # end
   end
 end
