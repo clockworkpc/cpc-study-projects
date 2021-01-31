@@ -10,24 +10,16 @@ module AdventOfCode
       end
     end
 
-    def execute_instructions(text)
+    def execute(instructions)
       index = 0
       log = []
       accumulator = []
-      instructions = instructions(text)
 
-      running = true
-      while running
+      loop do
         command = instructions.find { |hsh| hsh[:index] == index }
-        if log.include?(command)
-          puts 'Repeated command'
-          pp command
-          puts 'Previous command'
-          pp log.last
-          break
+        break if log.include?(command)
 
-        end
-        # break if log.include?(command)
+        break if index == instructions.count
 
         case command[:cmd]
         when :acc
@@ -41,38 +33,17 @@ module AdventOfCode
 
         log << command
       end
-      pp log
-      accumulator
+
+      {
+        accumulator: accumulator,
+        log: log,
+        index: index
+      }
     end
 
     def accumulator_sum(text)
-      execute_instructions(text).sum
+      res = execute(instructions(text))
+      res[:accumulator].sum
     end
-
-    # def execute_instructions(text, start_key = 0)
-    #   log = []
-    #   accumulator = []
-    #   instructions = instructions(text)
-
-    #   # require 'pry'; binding.pry
-    #   instructions[start_key..-1].each do |key, hsh|
-    #     pp log
-    #     break if log.include?(key)
-
-    #     log << key
-
-    #     key_int = key.to_s.scan(/\d+/).first.to_i
-    #     cmd = hsh.keys.first
-    #     v = hsh.values.first
-
-    #     case cmd
-    #     when :acc
-    #       accumulator << v
-    #     when :jmp
-    #       new_start_key = key_int + v
-    #       execute_instructions(text, new_start_key)
-    #     end
-    #   end
-    # end
   end
 end

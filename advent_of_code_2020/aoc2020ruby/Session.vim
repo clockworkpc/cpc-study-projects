@@ -8,7 +8,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 spec/advent_of_code/handheld_halting_spec.rb
-badd +1 lib/advent_of_code/handheld_halting.rb
+badd +26 lib/advent_of_code/handheld_halting.rb
 argglobal
 %argdel
 edit spec/advent_of_code/handheld_halting_spec.rb
@@ -28,11 +28,11 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 42 - ((26 * winheight(0) + 23) / 47)
+let s:l = 75 - ((30 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-42
+75
 normal! 0
 tabedit lib/advent_of_code/handheld_halting.rb
 set splitbelow splitright
@@ -51,13 +51,13 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 36 - ((35 * winheight(0) + 23) / 47)
+let s:l = 24 - ((23 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
-normal! 012|
-tabnext 2
+24
+normal! 0
+tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
