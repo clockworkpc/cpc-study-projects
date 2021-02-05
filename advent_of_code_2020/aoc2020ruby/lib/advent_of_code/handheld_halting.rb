@@ -17,7 +17,10 @@ module AdventOfCode
 
       loop do
         command = instructions.find { |hsh| hsh[:index] == index }
+        # require 'pry'; binding.pry if log.include?(command)
         break if log.include?(command)
+
+        # break if log.find_all { |cmd| cmd[:index] == command[:index] }.count > 1
 
         break if index == instructions.count
 

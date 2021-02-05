@@ -70,11 +70,13 @@ RSpec.describe AdventOfCode::HandheldHalting do
       # error = instructions[374]
       # error[:cmd] = :nop
 
-      error = instructions[29]
+      error = instructions[282]
       error[:cmd] = :nop
 
       res = subject.execute(instructions)
       require 'pry'; binding.pry
+      # expect(true).to eq(false)
+
       # [
       #   { index: 373, cmd: :nop, value: -19 },
       #   { index: 374, cmd: :jmp, value: 114 }
