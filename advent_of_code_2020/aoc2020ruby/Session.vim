@@ -2,16 +2,16 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Development/study/advent_of_code_2020/aoc2020ruby
+cd ~/Development/cpc-study-projects/advent_of_code_2020/aoc2020ruby
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 spec/advent_of_code/handheld_halting_spec.rb
+badd +78 spec/advent_of_code/handheld_halting_spec.rb
 badd +26 lib/advent_of_code/handheld_halting.rb
 argglobal
 %argdel
-edit spec/advent_of_code/handheld_halting_spec.rb
+edit lib/advent_of_code/handheld_halting.rb
 set splitbelow splitright
 set nosplitbelow
 wincmd t
@@ -28,34 +28,11 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 75 - ((30 * winheight(0) + 23) / 47)
+let s:l = 36 - ((22 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-75
-normal! 0
-tabedit lib/advent_of_code/handheld_halting.rb
-set splitbelow splitright
-set nosplitbelow
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=20
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-let s:l = 24 - ((23 * winheight(0) + 23) / 47)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-24
+36
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

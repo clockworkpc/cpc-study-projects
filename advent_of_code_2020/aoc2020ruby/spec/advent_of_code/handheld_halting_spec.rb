@@ -58,35 +58,32 @@ RSpec.describe AdventOfCode::HandheldHalting do
       expect(res[:accumulator]).to eq([1, 1, 6])
     end
 
+    it 'cycles through options' do
+      subject.meta_execute(puzzle_input)
+    end
+
     # it 'returns last command for puzzle_input' do
     #   instructions = subject.instructions(puzzle_input)
     #   res = subject.execute(puzzle_input)
     # end
 
-    it 'corrects puzzle_input and returns the sum' do
-      instructions = subject.instructions(puzzle_input)
-      # res = subject.execute(instructions)
+    # it 'corrects puzzle_input and returns the sum' do
+    #   instructions = subject.instructions(puzzle_input)
+    #   res = subject.execute(instructions)
+    #   pp res[:accumulator].sum
+    #   pp instructions[182]
 
-      # error = instructions[374]
-      # error[:cmd] = :nop
+    #   error = instructions[182]
+    #   error[:cmd] = :nop
+    #   pp instructions[182]
 
-      error = instructions[282]
-      error[:cmd] = :nop
 
-      res = subject.execute(instructions)
-      require 'pry'; binding.pry
-      # expect(true).to eq(false)
 
-      # [
-      #   { index: 373, cmd: :nop, value: -19 },
-      #   { index: 374, cmd: :jmp, value: 114 }
-      # ]
+    #   new_res = subject.execute(instructions)
+    #   pp new_res[:accumulator].sum
+    #   require 'pry'; binding.pry
 
-      # error = instructions[374]
-      # error[:cmd] = :nop
-      # res = subject.execute(instructions)
-      # puts res[:accumulator].sum
-    end
+    # end
   end
 
   describe 'Part 1' do
