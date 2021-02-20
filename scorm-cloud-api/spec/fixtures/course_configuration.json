@@ -1,0 +1,539 @@
+{
+  "settingItems": [
+    {
+      "id": "PlayerLaunchType",
+      "effectiveValue": "FRAMESET",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseNotSatisfiedTimeoutExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCaptureHistoryDetailed",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "ApiRollupRegistrationDuringSession",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCommMaxFailedSubmissions",
+      "effectiveValue": "2",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerLookaheadSequencerMode",
+      "effectiveValue": "REALTIME",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "SupplementalQueryStringParametersForAllActivities",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowProgressBar",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugLookAheadAudit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCourseStructureStartsOpen",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerRequiredWidth",
+      "effectiveValue": "0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoNotSatisfiedNormalExitAction",
+      "effectiveValue": "DISPLAY_MESSAGE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsSatisfactionTracked",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerForceObjectiveCompletionSetByContent",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerWrapScoWindowWithApi",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PDFContentStylesheetPath",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerScoreOverridesStatus",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PDFContentPageDurationThreshold",
+      "effectiveValue": "5",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "UsePlayerForTinCanLaunches",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseSatisfiedSuspendExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseSatisfiedTimeoutExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerPreventWindowResize",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDesiredFullScreen",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "MediaContentStylesheetPath",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerScaleRawScore",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugControlDetailed",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugSequencingAudit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerShowCourseStructure",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoSatisfiedNormalExitAction",
+      "effectiveValue": "GO_TO_NEXT_SCO",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerInvokeRollupAtSuspendAll",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "MediaContentCompletionThreshold",
+      "effectiveValue": "95",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoNotSatisfiedTimeoutExitAction",
+      "effectiveValue": "DISPLAY_MESSAGE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseNotSatisfiedSuspendExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "RedirectLaunchPageOnExit",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoSatisfiedSuspendExitAction",
+      "effectiveValue": "DISPLAY_MESSAGE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerUseMeasureProgressBar",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerValidateInteractionResponses",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "xAPIValidations",
+      "effectiveValue": ",",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerResetRunTimeData",
+      "effectiveValue": "NEVER",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDesiredWidth",
+      "effectiveValue": "960",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCommCommitFrequency",
+      "effectiveValue": "10000",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "UseModernPlayer",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "ModernPlayerCustomizationStylesheetUrl",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerEnableFlowNav",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseSatisfiedLogoutExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsIncompleteScoreMeaningful",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "ForceExitConcurrentLaunches",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerRequiredFullScreen",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerAlwaysFlowToFirstSco",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerRollupRuntimeAtScoUnload",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerTimeLimit",
+      "effectiveValue": "0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowNavBar",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerRequiredHeight",
+      "effectiveValue": "0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseNotSatisfiedLogoutExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowTitleBar",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerForceDisableRootChoice",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerStatusRollupModeThresholdScore",
+      "effectiveValue": "0.0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerSatisfiedCausesCompletion",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerSuspendDataMaxLength",
+      "effectiveValue": "4096",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerEnableChoiceNav",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoSatisfiedTimeoutExitAction",
+      "effectiveValue": "DISPLAY_MESSAGE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerUseQuickLookaheadSequencer",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowCloseItem",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugLookAheadDetailed",
+      "effectiveValue": "false",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerCompletionStatOfFailedSuccessStat",
+      "effectiveValue": "Unknown",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerIntermediateScoSatisfiedLogoutExitAction",
+      "effectiveValue": "EXIT_COURSE_AFTER_CONFIRM",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "WhenToRestartRegistration",
+      "effectiveValue": "NEVER",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCourseStructureWidth",
+      "effectiveValue": "0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PrivacyPolicyUrl",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsAvailableOffline",
+      "effectiveValue": "false",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerFinalScoCourseNotSatisfiedNormalExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerReturnToLmsAction",
+      "effectiveValue": "Legacy",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerLogoutCausesPlayerExit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoNotSatisfiedLogoutExitAction",
+      "effectiveValue": "EXIT_COURSE_AFTER_CONFIRM",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugSequencingDetailed",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "AudioVideoContentStylesheetPath",
+      "effectiveValue": "",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerPreventRightClick",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerCaptureHistory",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerStatusRollupModeValue",
+      "effectiveValue": "COMPLETE_WHEN_ALL_UNITS_COMPLETE_AND_NOT_FAILED",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsCompletionTracked",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "RedirectOnExitUrl",
+      "effectiveValue": "https://www.scorm.com",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIntermediateScoNotSatisfiedSuspendExitAction",
+      "effectiveValue": "DISPLAY_MESSAGE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerLaunchCompletedRegsAsNoCredit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerStatusDisplayPreference",
+      "effectiveValue": "COMBINED",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerInternetExplorerCompatibilityMode",
+      "effectiveValue": "NONE",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerDebugRteDetailed",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsIncompleteSatisfactionMeaningful",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerScoLaunchType",
+      "effectiveValue": "NEW_WINDOW",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugRteAudit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "course"
+    },
+    {
+      "id": "PlayerDebugIncludeTimestamps",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowFinishButton",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerRollupEmptySetToUnknown",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerMakeStudentPrefsGlobalToCourse",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinishCausesImmediateCommit",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerInvalidMenuItemAction",
+      "effectiveValue": "DISABLE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugControlAudit",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFirstScoIsPretest",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerIsScoreTracked",
+      "effectiveValue": "true",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerApplyRollupStatusToSuccess",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDebugSequencingSimple",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerScoreRollupModeNumberOfScoringObjects",
+      "effectiveValue": "0",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerDesiredHeight",
+      "effectiveValue": "600",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerShowHelp",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerFinalScoCourseSatisfiedNormalExitAction",
+      "effectiveValue": "EXIT_COURSE",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerAllowCompleteStatusChange",
+      "effectiveValue": "false",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "PlayerScoreRollupModeValue",
+      "effectiveValue": "AVERAGE_SCORE_OF_ALL_UNITS_WITH_SCORES",
+      "effectiveValueSource": "default"
+    },
+    {
+      "id": "LaunchAuthType",
+      "effectiveValue": "COOKIES",
+      "effectiveValueSource": "default"
+    }
+  ]
+}
