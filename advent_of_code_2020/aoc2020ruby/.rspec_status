@@ -44,3 +44,4 @@ example_id                                                       | status | run_
 ./spec/advent_of_code/handheld_halting_spec.rb[1:2:4]            | passed | 0.0431 seconds  |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:1]              | passed | 0.00185 seconds |
 ./spec/advent_of_code/set_up_project_spec.rb[1:1:2]              | passed | 0.00044 seconds |
+./spec/leetcode/two_sum_spec.rb[1:1]                             | passed | 0.0041 seconds  |
