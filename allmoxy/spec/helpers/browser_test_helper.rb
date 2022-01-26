@@ -55,3 +55,4 @@ class BrowserTestHelper
   def learner_sign_in_url
     [application_root_url, 'learners', 'sign_in'].join('/')
   end
+end

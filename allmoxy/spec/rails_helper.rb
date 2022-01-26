@@ -1,25 +1,22 @@
-require 'active_storage_validations/matchers'
+# require 'active_storage_validations/matchers'
 require 'capybara/rspec'
 require 'clipboard'
 require 'csv'
-require 'database_cleaner'
-require 'devise'
+# require 'database_cleaner'
+# require 'devise'
 require 'faker'
 require 'rainbow'
 require 'rake'
 require 'spec_helper'
-require 'wisper/rspec/matchers'
 
-require './spec/helpers/graphql_test_helper'
-require './spec/helpers/request_test_helper'
-require './spec/helpers/test_helper'
+# require './spec/helpers/graphql_test_helper'
+# require './spec/helpers/request_test_helper'
+# require './spec/helpers/test_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
-require_relative './helpers/redis_helper'
-
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+# require_relative './helpers/redis_helper'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
@@ -27,62 +24,62 @@ require 'rspec/rails'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
-begin
-  ActiveRecord::Migration.maintain_test_schema!
-rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
-  exit 1
-end
+# begin
+#   ActiveRecord::Migration.maintain_test_schema!
+# rescue ActiveRecord::PendingMigrationError => e
+#   puts e.to_s.strip
+#   exit 1
+# end
 
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
-  config.include Devise::Test::IntegrationHelpers, type: :request
+# RSpec.configure do |config|
+#   config.include Devise::Test::ControllerHelpers, type: :controller
+#   config.include Devise::Test::ControllerHelpers, type: :view
+#   config.include Devise::Test::IntegrationHelpers, type: :request
 
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+#   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.use_transactional_fixtures = true
+#   config.use_transactional_fixtures = true
 
-  # config.use_active_record = false
+#   # config.use_active_record = false
 
-  config.infer_spec_type_from_file_location!
+#   config.infer_spec_type_from_file_location!
 
-  config.filter_rails_from_backtrace!
+#   config.filter_rails_from_backtrace!
 
-  # config.filter_gems_from_backtrace("gem name")
+#   # config.filter_gems_from_backtrace("gem name")
 
-  config.include FactoryBot::Syntax::Methods
-  config.include Wisper::RSpec::BroadcastMatcher
+#   config.include FactoryBot::Syntax::Methods
+#   config.include Wisper::RSpec::BroadcastMatcher
 
-  config.before(:each, type: :feature) do
-    # :rack_test driver's Rack app under test shares database connection
-    # with the specs, so continue to use transaction strategy for speed.
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
-    unless driver_shares_db_connection_with_specs
-      # Driver is probably for an external browser with an app
-      # under test that does *not* share a database connection with the
-      # specs, so use truncation strategy.
-      DatabaseCleaner.strategy = :truncation
-    end
-  end
+#   # config.before(:each, type: :feature) do
+#   #   # :rack_test driver's Rack app under test shares database connection
+#   #   # with the specs, so continue to use transaction strategy for speed.
+#   #   driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+#   #   unless driver_shares_db_connection_with_specs
+#   #     # Driver is probably for an external browser with an app
+#   #     # under test that does *not* share a database connection with the
+#   #     # specs, so use truncation strategy.
+#   #     DatabaseCleaner.strategy = :truncation
+#   #   end
+#   # end
 
-  config.before(:suite) do
-    Faker::UniqueGenerator.clear
-    DatabaseCleaner.clean_with(:truncation)
-    DatabaseCleaner.strategy = :transaction
+#   # config.before(:suite) do
+#   #   Faker::UniqueGenerator.clear
+#   #   DatabaseCleaner.clean_with(:truncation)
+#   #   DatabaseCleaner.strategy = :transaction
 
-    # load_seeds unless $seeds_already_loaded
-  end
+#   #   # load_seeds unless $seeds_already_loaded
+#   # end
 
-  config.around do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
+#   # config.around do |example|
+#   #   DatabaseCleaner.cleaning do
+#   #     example.run
+#   #   end
+#   end
 
-  config.include ActiveStorageValidations::Matchers
-  config.include RedisHelper, redis: true
-end
+# config.include ActiveStorageValidations::Matchers
+# config.include RedisHelper, redis: true
+# end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
