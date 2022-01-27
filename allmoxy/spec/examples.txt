@@ -1,3 +1,0 @@
-example_id                                                         | status | run_time              |
------------------------------------------------------------------- | ------ | --------------------- |
-./spec/browser/login/boss_sign_in_credentials_valid_spec.rb[1:1:1] | passed | 1 minute 6.72 seconds |

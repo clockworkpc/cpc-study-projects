@@ -1,5 +1,6 @@
 require 'rails_helper'
-require './spec/helpers/browser/pages/manufacturer1demo/sign_in'
+require './spec/helpers/browser/pages/sign_in'
+require './spec/helpers/browser/pages/home'
 # require './spec/helpers/browser_test_helper'
 
 RSpec.describe 'User account, password login method', browser: true, type: :feature do
@@ -15,7 +16,8 @@ RSpec.describe 'User account, password login method', browser: true, type: :feat
     # @h = UnifiedLoginTestHelper.new(@browser)
 
     @browser = Watir::Browser.new
-    @h = Browser::Pages::SignIn.new(@browser)
+    @s = Browser::Pages::SignIn.new(@browser)
+    @h = Browser::Pages::Home.new(@browser)
   end
 
   after { @browser.close }
@@ -25,9 +27,10 @@ RSpec.describe 'User account, password login method', browser: true, type: :feat
   context 'with Boss Login' do
     it 'signs in a boss with valid credentials' do
       @browser.goto('https://manufacturer1demo.allmoxy.com/public/login/')
-      @h.username_text_field.set('boss123')
-      @h.password_input.set('boss123')
-      @h.login_button.click
+      @s.username_text_field.set('boss123')
+      @s.password_input.set('boss123')
+      @s.login_button.click
+      @h.avatar_image.click
       sleep(10)
     end
   end
