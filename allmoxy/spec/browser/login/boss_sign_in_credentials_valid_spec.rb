@@ -31,7 +31,10 @@ RSpec.describe 'User account, password login method', browser: true, type: :feat
       @s.password_input.set('boss123')
       @s.login_button.click
       @h.avatar_image.click
-      sleep(10)
+
+      expect(@h.home_link).to exist
+      require 'pry'
+      binding.pry
     end
   end
 end

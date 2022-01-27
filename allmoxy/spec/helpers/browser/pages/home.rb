@@ -13,7 +13,7 @@ module Browser
       end
 
       def find_dropdown_li(str)
-        @h.login_info_dropdown.children.find { |li| li.a.href.match?(str) }
+        login_info_dropdown.children.find { |li| li.a.href.match?(str) }
       end
 
       def home_link
