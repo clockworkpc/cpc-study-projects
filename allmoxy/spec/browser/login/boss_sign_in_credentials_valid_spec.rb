@@ -20,8 +20,6 @@ RSpec.describe 'User account, password login method', browser: true, type: :feat
     @h = Browser::Pages::Home.new(@browser)
   end
 
-  after { @browser.close }
-
   # let(:password) { 'boss123' }
 
   context 'with Boss Login' do
@@ -30,11 +28,11 @@ RSpec.describe 'User account, password login method', browser: true, type: :feat
       @s.username_text_field.set('boss123')
       @s.password_input.set('boss123')
       @s.login_button.click
-      @h.avatar_image.click
 
-      expect(@h.home_link).to exist
       require 'pry'
       binding.pry
+      @h.avatar_image.click
+      expect(@h.home_link).to exist
     end
   end
 end

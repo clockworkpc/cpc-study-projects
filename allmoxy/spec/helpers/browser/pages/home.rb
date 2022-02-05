@@ -24,15 +24,15 @@ module Browser
         find_dropdown_li('edit')
       end
 
-      def notes_new_link
-        find_dropdown_li('notes_new')
+      def new_note_link
+        find_dropdown_li('notes')
       end
 
-      def tasks_new_link
+      def new_task_link
         find_dropdown_li('tasks_new')
       end
 
-      def announcements_new_link
+      def new_announcements_link
         find_dropdown_li('announcements')
       end
 
@@ -41,11 +41,11 @@ module Browser
       end
 
       def modals_scanner_link
-        find_dropdown_li('modals_scanner')
+        find_dropdown_li('modals')
       end
 
       def timecard_scanner_link
-        find_dropdown_li('timecard_scanner')
+        find_dropdown_li('timecard')
       end
 
       def logout_link
