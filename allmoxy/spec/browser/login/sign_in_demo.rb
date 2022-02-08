@@ -13,3 +13,4 @@ pd_url = 'https://panhandledooranddrawer.allmoxy.com/login'
 @s.login_button.click
 
 @h.avatar_image.click
+@h.avatar_image.click
