@@ -5,6 +5,10 @@ pd_url = 'https://panhandledooranddrawer.allmoxy.com/login'
 formula_json_file = './spec/helpers/product_parts_formulae.json'
 @formulae = JSON.load_file(formula_json_file)
 
+def salvador_formula(part_str, attr_str)
+  @formulae['door'][part_str]['salvador'][attr_str]
+end
+
 @browser = Watir::Browser.new(:chrome, headless: false)
 @s = Browser::Pages::SignIn.new(@browser)
 @h = Browser::Pages::Home.new(@browser)
@@ -16,11 +20,20 @@ formula_json_file = './spec/helpers/product_parts_formulae.json'
 
 Watir.default_timeout = 3
 
-def part_string(str)
-  case str
-  when /top/
-    :top
-
+def part_string(new_value_str)
+  case new_value_str
+  when 'Salvador Top Rail'
+    'top_rail'
+  when 'Salvador Top Rail'
+    'top_rail'
+  when 'Salvador Top Rail'
+    'top_rail'
+  when 'Salvador Top Rail'
+    'top_rail'
+  when 'Salvador Top Rail'
+    'top_rail'
+  when 'Salvador Top Rail'
+    'top_rail'
   end
 end
 
@@ -66,20 +79,14 @@ def set_attribute_name(new_part_id_str, value_str)
   attribute_name_input.set(value_str)
 end
 
-def set_attribute_formula(new_part_id_str, value_str)
+def set_attribute_formula(new_part_id_str, value_str, part_str)
   attribute_formula_input = attribute_name_input(new_part_id_str, value_str)
   attribute_formula_input.focus
   type_int = attribute_formula_input.attributes[:id].scan(/\[\d\]/).first.scan(/\d+/).first
   id_regex = /(?=.*parts)(?=.*#{new_part_id_str})(?=.*attributes)(?=.*formula)(?=.*\[#{type_int}\])/
   formula_textarea = @browser.textarea(id: id_regex)
-  case value_str
-  when 'Length'
-    formula_textarea.set(SALVADOR_PART_ATTRIBUTE_FORMULA_LENGTH)
-  when 'Width'
-    formula_textarea.set(SALVADOR_PART_ATTRIBUTE_FORMULA_WIDTH)
-  when 'Qty'
-    formula_textarea.set(SALVADOR_PART_ATTRIBUTE_FORMULA_QTY)
-  end
+  attr_str = value_str.downcase
+  formula_textarea.set(salvador_formula(part_str, attr_str))
 end
 
 def part_delete(new_part_id_str, new_value_str)
@@ -89,19 +96,6 @@ def part_delete(new_part_id_str, new_value_str)
     trash_i.click
   end
 end
-
-# To add a "Salvador Top Rail"
-# 1. Duplicate the part
-# 2. Rename the name field
-# 3. Choose Exporter: "Salvador"
-# 4. Choose Precision: 1/100 (0.01)
-# 5. Replace the Part Export Formula from "Door" OR "Drawer Front"
-# 6. Replace the Attribute Formula (Length) from "Door" OR "Drawer Front"
-# 7. Set the Attribute Name to "Width"
-# 8. Replace the Attribute Formula (Width) from "Door" OR "Drawer Front"
-# 9. Remove the Attribute "Cameron_Length"
-# 10. Replace the Attribute Formula (Qty) from "Door" OR "Drawer Front"
-# 11. Remove the "wood_type_thick_doors" Attribute
 
 def create_part(value_str, new_value_str)
   part_str = part_string(new_value_str)
@@ -123,18 +117,18 @@ def create_part(value_str, new_value_str)
   part_formula_name_input = @browser.input(id: regex_formula_name)
   part_formula_name_input.set(new_value_str.parameterize(separator: '_'))
 
-  set_part_export_formula(new_part_id_str, SALVADOR_PART_EXPORT_FORMULA_DOOR)
+  set_part_export_formula(new_part_id_str, part_str)
   set_exporter(new_part_id_str, 'Salvador')
   set_precision(new_part_id_str, '.01')
 
   set_attribute_name(new_part_id_str, 'Length')
-  set_attribute_formula(new_part_id_str, 'Length')
+  set_attribute_formula(new_part_id_str, 'Length', part_str)
 
   set_attribute_name(new_part_id_str, 'Width')
-  set_attribute_formula(new_part_id_str, 'Width')
+  set_attribute_formula(new_part_id_str, 'Width', part_str)
 
   set_attribute_name(new_part_id_str, 'Qty')
-  set_attribute_formula(new_part_id_str, 'Qty')
+  set_attribute_formula(new_part_id_str, 'Qty', part_str)
 
   # remove_attribute_cameron_length
   puts 'Looking to delete Cameron_Length'
