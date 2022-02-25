@@ -21,20 +21,16 @@ end
 Watir.default_timeout = 3
 
 def part_string(new_value_str)
-  case new_value_str
-  when 'Salvador Top Rail'
-    'top_rail'
-  when 'Salvador Top Rail'
-    'top_rail'
-  when 'Salvador Top Rail'
-    'top_rail'
-  when 'Salvador Top Rail'
-    'top_rail'
-  when 'Salvador Top Rail'
-    'top_rail'
-  when 'Salvador Top Rail'
-    'top_rail'
-  end
+  hsh = {
+    'Salvador Top Rail' => 'top_rail',
+    'Salvador Bottom Rail' => 'bottom_rail',
+    'Salvador Right Stile' => 'left_stile',
+    'Salvador Left Stile' => 'right_stile',
+    'Salvador Horizontal Mid Rail' => 'horizontal_mid_rail',
+    'Salvador Vertical Mid Rail' => 'vertical_mid_rail'
+  }
+
+  hsh[new_value_str]
 end
 
 def duplicate_part(value_str)
@@ -52,7 +48,8 @@ def rename_part(value_str, new_value_str)
   part_input.set(new_value_str)
 end
 
-def set_part_export_formula(new_part_id_str, formula_str)
+def set_part_export_formula(new_part_id_str, part_str)
+  formula_str = salvador_formula(part_str, 'part_export')
   export_formula_textarea = @browser.textarea(id: /(?=.*#{new_part_id_str})(?=.*cutlist)/)
   export_formula_textarea.set(formula_str)
 end
@@ -131,9 +128,9 @@ def create_part(value_str, new_value_str)
   set_attribute_formula(new_part_id_str, 'Qty', part_str)
 
   # remove_attribute_cameron_length
-  puts 'Looking to delete Cameron_Length'
-  part_delete(new_part_id_str, 'Cameron_Length')
-  part_delete(new_part_id_str, 'Cameron_Length')
+  # puts 'Looking to delete Cameron_Length'
+  # part_delete(new_part_id_str, 'Cameron_Length')
+  # part_delete(new_part_id_str, 'Cameron_Length')
 end
 
 create_part('Top', 'Salvador Top Rail')
